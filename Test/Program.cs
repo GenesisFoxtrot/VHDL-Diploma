@@ -36,7 +36,7 @@ namespace Test
             var newText = parser.AddSameSignal(text2, gnd, "WATERMARKED_GND");
             newText = parser.AddSameSignal(newText,   vcc, "WATERMARKED_VCC");
             var entity = parser.ParEntities(text2);
-            Console.WriteLine("OUT:");
+            Console.WriteLine("OUT:");  
             entity.FirstOrDefault().Ports.Where(x=>x.PortType == PortTypes.Out).ToList().ForEach(y=>Console.WriteLine("  "+y.Name + "  " + y.ValueType));
             Console.WriteLine("IN:");
             entity.FirstOrDefault().Ports.Where(x => x.PortType == PortTypes.In).ToList().ForEach(y => Console.WriteLine("  " + y.Name + "  " + y.ValueType));
