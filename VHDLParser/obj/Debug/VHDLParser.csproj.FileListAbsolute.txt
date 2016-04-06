@@ -1,0 +1,7 @@
+c:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLParser\bin\Debug\VHDLParser.dll
+c:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLParser\bin\Debug\VHDLParser.pdb
+c:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLParser\bin\Debug\Model.dll
+c:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLParser\bin\Debug\Model.pdb
+c:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLParser\obj\Debug\VHDLParser.csprojResolveAssemblyReference.cache
+c:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLParser\obj\Debug\VHDLParser.dll
+c:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLParser\obj\Debug\VHDLParser.pdb
