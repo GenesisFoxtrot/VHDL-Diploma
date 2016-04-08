@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 namespace VHDLParser
 {
-    public class FileTools
+    public class FileService
     {
         public string GetVHDL(string path)
         {

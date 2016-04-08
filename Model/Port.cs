@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Port
+    public class Port : Signal
     {
-        public string Name { get; set; }
         public PortTypes PortType { get; set; }
-        public string ValueType { get; set; }
-        public string DefaultValue { get; set; }
-        
     }
 }
