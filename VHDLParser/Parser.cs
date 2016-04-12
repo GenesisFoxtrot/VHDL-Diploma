@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Model; 
+using Model;
+using Model.VHDLWords;
 
 namespace VHDLParser
 {
@@ -44,7 +45,7 @@ namespace VHDLParser
                     PortType = ParsePortType(pTypeMatch.Value),
                     ValueType = Regex.Match(remainngWithValueType, VHDLName).Value,
                     DefaultValue = defaultPart != String.Empty ? Regex.Match(defaultPart, DefaultValue).Value : null,
-                    Enumeration = portEnumeration
+                    Enumeration = !String.IsNullOrWhiteSpace(portEnumeration) ? ParseEnumeration(portEnumeration) : null
                 };
                 results.Add(port);
             });
@@ -56,6 +57,32 @@ namespace VHDLParser
             return Regex.Match(text, "signal" + MFS + signal + MFS + ":" + MFS + VHDLName ).Value;
         }
 
+
+        private Enumeration ParseEnumeration(string portEnumeration)
+        {
+            var newEnumeration = new Enumeration();
+            var to = "(to|downto)";
+            var directionStr = Regex.Match(portEnumeration, to).Value;
+            EnumerationDirections direction;
+            if (!EnumerationDirections.TryParse(directionStr, true, out direction))
+                return null;
+            
+            var leftNumber =  Num + "(?=" + MFS + to + ")";
+
+            var rightNumber = "(?<=" + to + MFS + ")" + Num;
+
+            int left, right;
+            var leftStr = Regex.Match(portEnumeration, leftNumber).Value;
+            var rightStr = Regex.Match(portEnumeration, rightNumber).Value;
+
+            if (!int.TryParse(leftStr,  out left )) throw new Exception("!!!");
+            if (!int.TryParse(rightStr, out right)) throw new Exception("!!!");
+            newEnumeration.From = left;
+            newEnumeration.To = right;
+
+
+            return newEnumeration;
+        }
 
         public List<Entity> ParEntities(string vhdl)
         {

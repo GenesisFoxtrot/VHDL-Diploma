@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VHDLParser", "VHDLParser\VH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{3AACAB48-5E12-4D61-B85B-E9FD6A6C328B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diploma.UI", "Diploma.UI\Diploma.UI.csproj", "{CF058003-3B5A-4E2E-A4E7-274D76F395FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3AACAB48-5E12-4D61-B85B-E9FD6A6C328B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AACAB48-5E12-4D61-B85B-E9FD6A6C328B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AACAB48-5E12-4D61-B85B-E9FD6A6C328B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF058003-3B5A-4E2E-A4E7-274D76F395FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF058003-3B5A-4E2E-A4E7-274D76F395FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF058003-3B5A-4E2E-A4E7-274D76F395FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF058003-3B5A-4E2E-A4E7-274D76F395FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

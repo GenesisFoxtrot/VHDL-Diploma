@@ -13,6 +13,7 @@ namespace VHDLParser
         protected const string SEL = MFS + EL;      //End of the line with spaces
         protected const string VHDLName = "[a-zA-Z_0-9]+";
         protected const string AEL = @"(" + MFS + ";" + ")?" + SEL;
+        protected const string Num = "[0-9]+";
         //----------------Port assignment-------------------------------------
         protected const string Enumeration = "\\([a-zA-Z0-9 ]+\\)";
         protected const string MEnumeration = "(" + MFS + Enumeration + ")?";

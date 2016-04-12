@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace Model.VHDLEement
 {
-    public class Entity
+    public class Decoder
     {
-        public string Name { get; set; }
-        public List<Port> Ports { get; set; } 
-
     }
 }
