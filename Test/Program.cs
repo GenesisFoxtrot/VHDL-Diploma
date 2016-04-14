@@ -24,8 +24,8 @@ namespace Test
             var parser = new Parser();
             var entity = parser.ParEntities(vhdl).FirstOrDefault();
             WatermarkService service = new WatermarkService();
-            var document = service.Watermark(vhdl, vhdlLib, entity);
-            File.WriteAllText(@"D:\111.vhdl", document.Document);
+            //var document = service.Watermark(vhdl, vhdlLib, entity);
+            //File.WriteAllText(@"D:\111.vhdl", document.Document);
             Console.ReadLine();
         }
     }

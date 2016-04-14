@@ -1,5 +1,0 @@
-﻿         var titles = MatchesToStrings(Regex.Matches(vhdl, ComponentPatternTop, RegexOptions.None, TimeSpan.FromSeconds(1000)));
-            var titles2 =titles.Select(x => Regex.Match(x, ComponentName).Value).ToList();
-
-            var badDeals = titles2.Where(x => result.All(y => y.Name != x)).ToList();
-            badDeals.ForEach(Console.WriteLine);

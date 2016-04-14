@@ -61,7 +61,7 @@ namespace Diploma.UI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Port Name :.
+        ///   Looks up a localized string similar to Port Name: .
         /// </summary>
         internal static string PortForm_PortForm_Load_Port_Name__ {
             get {

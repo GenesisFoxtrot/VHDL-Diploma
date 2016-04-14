@@ -1,27 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Model;
 using Model.VHDLWords;
 
-namespace VHDLParser
+namespace VHDLParser.Services
 {
     public class Parser : ParseConstants
     {
         private List<string> MatchesToStrings(MatchCollection collection)
         {
             return collection.Cast<Match>().Select(match => match.Value).ToList();
-        } 
+        }
         public List<Entity> ParseCompenets(string vhdl)
         {
             var entitiesStr = Regex.Matches(vhdl, ComponentPattern, RegexOptions.None, TimeSpan.FromSeconds(1000));
-           
+
             var result = MatchesToStrings(entitiesStr).Select(x => new Entity()
             {
                 Name = Regex.Match(x, ComponentName).Value,
-                Ports = ParsePorts(Regex.Match(x, Ports).Value) 
+                Ports = ParsePorts(Regex.Match(x, Ports).Value)
             }).ToList();
 
             return result;
@@ -52,30 +50,30 @@ namespace VHDLParser
             return results;
         }
 
-        public string ParseSignal(string text,  string signal)
+        public string ParseSignal(string text, string signal)
         {
-            return Regex.Match(text, "signal" + MFS + signal + MFS + ":" + MFS + VHDLName ).Value;
+            return Regex.Match(text, "signal" + MFS + signal + MFS + ":" + MFS + VHDLName).Value;
         }
 
 
         private Enumeration ParseEnumeration(string portEnumeration)
         {
             var newEnumeration = new Enumeration();
-            var to = "(to|downto)";
+            var to = "(downto|to)";
             var directionStr = Regex.Match(portEnumeration, to).Value;
             EnumerationDirections direction;
             if (!EnumerationDirections.TryParse(directionStr, true, out direction))
                 return null;
-            
-            var leftNumber =  Num + "(?=" + MFS + to + ")";
+            newEnumeration.Direction = direction;
 
+            var leftNumber = Num + "(?=" + MFS + to + ")";
             var rightNumber = "(?<=" + to + MFS + ")" + Num;
 
             int left, right;
             var leftStr = Regex.Match(portEnumeration, leftNumber).Value;
             var rightStr = Regex.Match(portEnumeration, rightNumber).Value;
 
-            if (!int.TryParse(leftStr,  out left )) throw new Exception("!!!");
+            if (!int.TryParse(leftStr, out left)) throw new Exception("!!!");
             if (!int.TryParse(rightStr, out right)) throw new Exception("!!!");
             newEnumeration.From = left;
             newEnumeration.To = right;
@@ -95,7 +93,7 @@ namespace VHDLParser
             }).ToList();
 
             return result;
-        } 
+        }
 
         public List<Map> ParseMaps(string vhdl)
         {
@@ -109,9 +107,18 @@ namespace VHDLParser
                 var title = Regex.Match(map.ToString(), RegularTitle).Value;
                 newMap.Name = Regex.Match(title, MapName).Value;
                 newMap.Entity = Regex.Match(title, MapEntity).Value;  //OneAssimnet
+                var genericAssigments = Regex.Match(map.ToString(), GenericAsigments).Value;
+                newMap.GenericAssigmnets =
+                    MatchesToStrings(Regex.Matches(genericAssigments, OneGenericAssimnet)).Select(asgn => new Assigment()
+                    {
+                        Text = asgn,
+                        LeftSide = Regex.Match(asgn, AssigmentsLeftSide).Value,
+                        RightSide = Regex.Match(asgn, GenericAssigmentsRightSide).Value
+                    }).ToList();
+
                 var assigments = Regex.Match(map.ToString(), Assigments).Value;
                 newMap.Assigmnets =
-                    MatchesToStrings(Regex.Matches(assigments, OneAssimnet)).Select(asgn => new Assigmnet()
+                    MatchesToStrings(Regex.Matches(assigments, OneAssimnet)).Select(asgn => new Assigment()
                     {
                         Text = asgn,
                         LeftSide = Regex.Match(asgn, AssigmentsLeftSide).Value,
@@ -120,6 +127,32 @@ namespace VHDLParser
                 mapList.Add(newMap);
             });
             return mapList;
+        }
+
+        public List<Signal> ParseSignals(string vhdl)
+        {
+
+            var signalSection = Regex.Match(vhdl, signalSectionPattern).Value;
+            List<Signal> signals = new List<Signal>();
+            MatchesToStrings(Regex.Matches(signalSection, SignalPattern)).ForEach(x =>
+            {
+                Match pTypeMatch = Regex.Match(x, PortType);
+                var remainngWithValueType = x.Substring(pTypeMatch.Index + pTypeMatch.Length);
+                var defaultPart = Regex.Match(remainngWithValueType, Default).Value;
+                var portEnumeration = Regex.Match(remainngWithValueType, Enumeration).Value;
+
+                var newSignal = new Signal
+                {
+                    Name = Regex.Match(x, PortName).Value,
+                    ValueType = pTypeMatch.Value,
+                    DefaultValue = defaultPart != String.Empty ? Regex.Match(defaultPart, DefaultValue).Value : null,
+                    Enumeration = !String.IsNullOrWhiteSpace(portEnumeration) ? ParseEnumeration(portEnumeration) : null
+                };
+
+                signals.Add(newSignal);
+            });
+
+            return signals;
         }
 
         public PortTypes ParsePortType(string type)

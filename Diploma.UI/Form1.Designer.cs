@@ -28,82 +28,158 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.InputListBox = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.EnableIputLabel = new System.Windows.Forms.Label();
-            this.OutputListBox = new System.Windows.Forms.ListBox();
-            this.EnableOutputLabel = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.inputListBox = new System.Windows.Forms.ListBox();
+            this.parseVHDLButton = new System.Windows.Forms.Button();
+            this.enableIputLabel = new System.Windows.Forms.Label();
+            this.outputListBox = new System.Windows.Forms.ListBox();
+            this.enableOutputLabel = new System.Windows.Forms.Label();
+            this.openPortDialogButton = new System.Windows.Forms.Button();
+            this.openVHDLFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.openVHDLFileButton = new System.Windows.Forms.Button();
+            this.watermarkButton = new System.Windows.Forms.Button();
+            this.infoGroupBox = new System.Windows.Forms.GroupBox();
+            this.entityNameLabel = new System.Windows.Forms.Label();
+            this.freeBitsLabel = new System.Windows.Forms.Label();
+            this.signaturePortsButton = new System.Windows.Forms.Button();
+            this.infoGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // InputListBox
+            // inputListBox
             // 
-            this.InputListBox.FormattingEnabled = true;
-            this.InputListBox.Location = new System.Drawing.Point(20, 48);
-            this.InputListBox.Name = "InputListBox";
-            this.InputListBox.Size = new System.Drawing.Size(120, 95);
-            this.InputListBox.TabIndex = 0;
-            this.InputListBox.SelectedIndexChanged += new System.EventHandler(this.InputListBox_SelectedIndexChanged);
+            this.inputListBox.FormattingEnabled = true;
+            this.inputListBox.Location = new System.Drawing.Point(20, 48);
+            this.inputListBox.Name = "inputListBox";
+            this.inputListBox.Size = new System.Drawing.Size(120, 95);
+            this.inputListBox.TabIndex = 0;
             // 
-            // button1
+            // parseVHDLButton
             // 
-            this.button1.Location = new System.Drawing.Point(742, 432);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.parseVHDLButton.Location = new System.Drawing.Point(101, 424);
+            this.parseVHDLButton.Name = "parseVHDLButton";
+            this.parseVHDLButton.Size = new System.Drawing.Size(75, 23);
+            this.parseVHDLButton.TabIndex = 1;
+            this.parseVHDLButton.Text = "Parse";
+            this.parseVHDLButton.UseVisualStyleBackColor = true;
+            this.parseVHDLButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // EnableIputLabel
+            // enableIputLabel
             // 
-            this.EnableIputLabel.AutoSize = true;
-            this.EnableIputLabel.Location = new System.Drawing.Point(17, 23);
-            this.EnableIputLabel.Name = "EnableIputLabel";
-            this.EnableIputLabel.Size = new System.Drawing.Size(86, 13);
-            this.EnableIputLabel.TabIndex = 2;
-            this.EnableIputLabel.Text = "Enable iput ports";
+            this.enableIputLabel.AutoSize = true;
+            this.enableIputLabel.Location = new System.Drawing.Point(17, 23);
+            this.enableIputLabel.Name = "enableIputLabel";
+            this.enableIputLabel.Size = new System.Drawing.Size(86, 13);
+            this.enableIputLabel.TabIndex = 2;
+            this.enableIputLabel.Text = "Enable iput ports";
             // 
-            // OutputListBox
+            // outputListBox
             // 
-            this.OutputListBox.FormattingEnabled = true;
-            this.OutputListBox.Location = new System.Drawing.Point(163, 48);
-            this.OutputListBox.Name = "OutputListBox";
-            this.OutputListBox.Size = new System.Drawing.Size(120, 95);
-            this.OutputListBox.TabIndex = 3;
+            this.outputListBox.FormattingEnabled = true;
+            this.outputListBox.Location = new System.Drawing.Point(163, 48);
+            this.outputListBox.Name = "outputListBox";
+            this.outputListBox.Size = new System.Drawing.Size(120, 95);
+            this.outputListBox.TabIndex = 3;
             // 
-            // EnableOutputLabel
+            // enableOutputLabel
             // 
-            this.EnableOutputLabel.AutoSize = true;
-            this.EnableOutputLabel.Location = new System.Drawing.Point(160, 23);
-            this.EnableOutputLabel.Name = "EnableOutputLabel";
-            this.EnableOutputLabel.Size = new System.Drawing.Size(99, 13);
-            this.EnableOutputLabel.TabIndex = 4;
-            this.EnableOutputLabel.Text = "Enable output ports";
+            this.enableOutputLabel.AutoSize = true;
+            this.enableOutputLabel.Location = new System.Drawing.Point(160, 23);
+            this.enableOutputLabel.Name = "enableOutputLabel";
+            this.enableOutputLabel.Size = new System.Drawing.Size(99, 13);
+            this.enableOutputLabel.TabIndex = 4;
+            this.enableOutputLabel.Text = "Enable output ports";
             // 
-            // button2
+            // openPortDialogButton
             // 
-            this.button2.Location = new System.Drawing.Point(661, 432);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.openPortDialogButton.Location = new System.Drawing.Point(65, 149);
+            this.openPortDialogButton.Name = "openPortDialogButton";
+            this.openPortDialogButton.Size = new System.Drawing.Size(75, 23);
+            this.openPortDialogButton.TabIndex = 5;
+            this.openPortDialogButton.Text = "Set";
+            this.openPortDialogButton.UseVisualStyleBackColor = true;
+            this.openPortDialogButton.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // openVHDLFileDialog
+            // 
+            this.openVHDLFileDialog.FileName = "file";
+            // 
+            // openVHDLFileButton
+            // 
+            this.openVHDLFileButton.Location = new System.Drawing.Point(20, 424);
+            this.openVHDLFileButton.Name = "openVHDLFileButton";
+            this.openVHDLFileButton.Size = new System.Drawing.Size(75, 23);
+            this.openVHDLFileButton.TabIndex = 6;
+            this.openVHDLFileButton.Text = "OpenFile";
+            this.openVHDLFileButton.UseVisualStyleBackColor = true;
+            this.openVHDLFileButton.Click += new System.EventHandler(this.openVHDLFileButton_Click);
+            // 
+            // watermarkButton
+            // 
+            this.watermarkButton.Location = new System.Drawing.Point(184, 424);
+            this.watermarkButton.Name = "watermarkButton";
+            this.watermarkButton.Size = new System.Drawing.Size(75, 23);
+            this.watermarkButton.TabIndex = 7;
+            this.watermarkButton.Text = "Watermark";
+            this.watermarkButton.UseVisualStyleBackColor = true;
+            this.watermarkButton.Click += new System.EventHandler(this.watermarkButton_Click);
+            // 
+            // infoGroupBox
+            // 
+            this.infoGroupBox.Controls.Add(this.freeBitsLabel);
+            this.infoGroupBox.Controls.Add(this.entityNameLabel);
+            this.infoGroupBox.Location = new System.Drawing.Point(20, 194);
+            this.infoGroupBox.Name = "infoGroupBox";
+            this.infoGroupBox.Size = new System.Drawing.Size(263, 207);
+            this.infoGroupBox.TabIndex = 8;
+            this.infoGroupBox.TabStop = false;
+            this.infoGroupBox.Text = "Inforamtion";
+            // 
+            // entityNameLabel
+            // 
+            this.entityNameLabel.AutoSize = true;
+            this.entityNameLabel.Location = new System.Drawing.Point(11, 29);
+            this.entityNameLabel.Name = "entityNameLabel";
+            this.entityNameLabel.Size = new System.Drawing.Size(64, 13);
+            this.entityNameLabel.TabIndex = 0;
+            this.entityNameLabel.Text = "Entity Name";
+            // 
+            // freeBitsLabel
+            // 
+            this.freeBitsLabel.AutoSize = true;
+            this.freeBitsLabel.Location = new System.Drawing.Point(11, 56);
+            this.freeBitsLabel.Name = "freeBitsLabel";
+            this.freeBitsLabel.Size = new System.Drawing.Size(132, 13);
+            this.freeBitsLabel.TabIndex = 1;
+            this.freeBitsLabel.Text = "Free Bits for Watermarking";
+            // 
+            // signaturePortsButton
+            // 
+            this.signaturePortsButton.Location = new System.Drawing.Point(208, 149);
+            this.signaturePortsButton.Name = "signaturePortsButton";
+            this.signaturePortsButton.Size = new System.Drawing.Size(75, 23);
+            this.signaturePortsButton.TabIndex = 9;
+            this.signaturePortsButton.Text = "Set";
+            this.signaturePortsButton.UseVisualStyleBackColor = true;
+            this.signaturePortsButton.Click += new System.EventHandler(this.signaturePortsButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 467);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.EnableOutputLabel);
-            this.Controls.Add(this.OutputListBox);
-            this.Controls.Add(this.EnableIputLabel);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.InputListBox);
+            this.ClientSize = new System.Drawing.Size(311, 467);
+            this.Controls.Add(this.signaturePortsButton);
+            this.Controls.Add(this.infoGroupBox);
+            this.Controls.Add(this.watermarkButton);
+            this.Controls.Add(this.openVHDLFileButton);
+            this.Controls.Add(this.openPortDialogButton);
+            this.Controls.Add(this.enableOutputLabel);
+            this.Controls.Add(this.outputListBox);
+            this.Controls.Add(this.enableIputLabel);
+            this.Controls.Add(this.parseVHDLButton);
+            this.Controls.Add(this.inputListBox);
             this.Name = "Form1";
             this.Text = "FPGA Watermarking";
+            this.infoGroupBox.ResumeLayout(false);
+            this.infoGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,12 +187,19 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox InputListBox;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label EnableIputLabel;
-        private System.Windows.Forms.ListBox OutputListBox;
-        private System.Windows.Forms.Label EnableOutputLabel;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ListBox inputListBox;
+        private System.Windows.Forms.Button parseVHDLButton;
+        private System.Windows.Forms.Label enableIputLabel;
+        private System.Windows.Forms.ListBox outputListBox;
+        private System.Windows.Forms.Label enableOutputLabel;
+        private System.Windows.Forms.Button openPortDialogButton;
+        private System.Windows.Forms.OpenFileDialog openVHDLFileDialog;
+        private System.Windows.Forms.Button openVHDLFileButton;
+        private System.Windows.Forms.Button watermarkButton;
+        private System.Windows.Forms.GroupBox infoGroupBox;
+        private System.Windows.Forms.Label entityNameLabel;
+        private System.Windows.Forms.Label freeBitsLabel;
+        private System.Windows.Forms.Button signaturePortsButton;
     }
 }
 
