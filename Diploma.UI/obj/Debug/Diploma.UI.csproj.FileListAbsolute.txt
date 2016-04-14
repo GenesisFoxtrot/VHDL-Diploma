@@ -1,0 +1,16 @@
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Diploma.UI.exe.config
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Diploma.UI.exe
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Diploma.UI.pdb
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Model.dll
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\VHDLParser.dll
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Model.pdb
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\VHDLParser.pdb
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.csprojResolveAssemblyReference.cache
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.Form1.resources
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.Properties.Resources.resources
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.csproj.GenerateResource.Cache
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.exe
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.pdb
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.PortForm.resources
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.WatermarkedTextForm.resources
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.OutForm.resources
