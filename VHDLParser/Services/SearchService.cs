@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.VHDLWords;
+using Model.VHDLWords.Signals;
 using VHDLParser.Entities;
 
 namespace VHDLParser.Services
@@ -18,7 +19,7 @@ namespace VHDLParser.Services
             _document = document;
         }
 
-        public List<Signal> ConstValuesGenerators()
+        public List<FullSignal> ConstValuesGenerators()
         {
             if (_document.Components == null || _document.Maps ==null || _document.Signals == null)
                 return null;

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Services\FileService.cs" />
+    <Compile Include="Services\Parsers\SignalParser.cs" />
     <Compile Include="Services\SearchService.cs" />
     <Compile Include="Services\Helper.cs" />
     <Compile Include="Services\ParseConstants.cs" />

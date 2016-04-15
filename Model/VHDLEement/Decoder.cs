@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Model.Options;
 using Model.VHDLWords;
+using Model.VHDLWords.Signals;
 
 namespace Model.VHDLEement
 {

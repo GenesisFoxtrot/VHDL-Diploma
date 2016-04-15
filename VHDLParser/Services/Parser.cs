@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Model.VHDLWords;
+using Model.VHDLWords.Enumerations;
+using Model.VHDLWords.Signals;
 
 namespace VHDLParser.Services
 {
@@ -56,9 +58,9 @@ namespace VHDLParser.Services
         }
 
 
-        private Enumeration ParseEnumeration(string portEnumeration)
+        private ComplexEnumeration ParseEnumeration(string portEnumeration)
         {
-            var newEnumeration = new Enumeration();
+            var newEnumeration = new ComplexEnumeration();
             var to = "(downto|to)";
             var directionStr = Regex.Match(portEnumeration, to).Value;
             EnumerationDirections direction;
@@ -129,11 +131,16 @@ namespace VHDLParser.Services
             return mapList;
         }
 
-        public List<Signal> ParseSignals(string vhdl)
+        public Assigment ParseAssigment()
+        {
+            
+        }
+
+        public List<FullSignal> ParseSignals(string vhdl)
         {
 
             var signalSection = Regex.Match(vhdl, signalSectionPattern).Value;
-            List<Signal> signals = new List<Signal>();
+            List<FullSignal> signals = new List<FullSignal>();
             MatchesToStrings(Regex.Matches(signalSection, SignalPattern)).ForEach(x =>
             {
                 Match pTypeMatch = Regex.Match(x, PortType);
@@ -141,7 +148,7 @@ namespace VHDLParser.Services
                 var defaultPart = Regex.Match(remainngWithValueType, Default).Value;
                 var portEnumeration = Regex.Match(remainngWithValueType, Enumeration).Value;
 
-                var newSignal = new Signal
+                var newSignal = new FullSignal()
                 {
                     Name = Regex.Match(x, PortName).Value,
                     ValueType = pTypeMatch.Value,

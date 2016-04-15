@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using Model.VHDLWords;
+using Model.VHDLWords.Signals;
 
 namespace VHDLParser.Services
 {
@@ -17,10 +18,6 @@ namespace VHDLParser.Services
             return "      " + assigment.LeftSide + " => " + assigment.RightSide;
         }
 
-        public static string SignalToVHDL(Signal signal)
-        {
-            return "  signal " + signal.Name + " : " + signal.ValueType + " " + signal.Enumeration + ";\n";
-        }
         public static string MapToVHDL(Map map)
         {
             var newMap = "  " + map.Name + " : " + map.Entity + "\n";

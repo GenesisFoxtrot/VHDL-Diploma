@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using Model.VHDLWords;
+using Model.VHDLWords.Enumerations;
+using Model.VHDLWords.Signals;
 using VHDLParser.Entities;
 using Decoder = Model.VHDLEement.Decoder;
 
@@ -20,7 +22,7 @@ namespace VHDLParser.Services
         public VHDLDocument Watermark(WatermarkOptions options)
         {
             //-----------------DECODER----------------------------------------
-            Signal isWatermark = new Signal
+            FullSignal isWatermark = new FullSignal
             {
                 Name = "IS_WATERMARK",
                 ValueType = "STD_LOGIC",
@@ -34,7 +36,15 @@ namespace VHDLParser.Services
 
             _document.AddVHDLInBehaviorSection(decoder.ToString());
 
-            List<SignalBit> stSignalBits = new List<SignalBit>();
+            FullSignal watermarkedSignal = new  FullSignal()
+            {
+                Name = "WATERMARKED_OUT",
+                ValueType = StdLogicVector,
+                
+            };
+
+
+            List<PartialSignal> stSignalBits = new List<PartialSignal>();
             int i = 0;
             _document.FreeLuts.ForEach(lut =>
             {
@@ -43,7 +53,7 @@ namespace VHDLParser.Services
                 ChangeLutInitVector(lut, true);
 
 
-                var newSignal = new SignalBit() { Name = "WATERMARKED_OUT", BitNubmer = i };
+                var newSignal = watermarkedSignal.CreatePartial(new SimpleIndex(i));
                 stSignalBits.Add(newSignal);
 
                 InjectLutOutput(lut, newSignal);
@@ -51,19 +61,18 @@ namespace VHDLParser.Services
                 i++;
             });
 
-            Signal watermarkedSignal = new Signal
-            {
-                Name = "WATERMARKED_OUT",
-                ValueType = StdLogicVector,
-                Enumeration = new Enumeration(stSignalBits.Sum(x => x.Bits), EnumerationDirections.Downto)
-            };
+            watermarkedSignal.Enumeration = new ComplexEnumeration(stSignalBits.Sum(x => x.Bits),
+                EnumerationDirections.Downto);
+
+
+
 
             _document.AddSignal(watermarkedSignal);
 
             i = 0;
             options.SignatureOutputSettings.Where(y=>y.IsUsed).ToList().ForEach(x =>
             {
-                Signal fictionOutSignal = new Signal
+                FullSignal fictionOutSignal = new FullSignal()
                 {
                     Name = "FICTION_OUT" + i,
                     ValueType = x.Port.ValueType,
@@ -78,7 +87,7 @@ namespace VHDLParser.Services
             return _document;
         }
 
-        public void ChangeLutConstIputs(Map lut, Signal signal, List<Signal> constSignals)
+        public void ChangeLutConstIputs(Map lut, Signal signal, List<FullSignal> constSignals)
         {
             var inputAssigmnet = lut.Assigmnets.FirstOrDefault(assgn => constSignals.Select(c=>c.Name).Contains(assgn.RightSide));
             inputAssigmnet.RightSide = signal.Name;

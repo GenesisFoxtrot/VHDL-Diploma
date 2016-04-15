@@ -1,8 +1,6 @@
-﻿using Model.Options;
-
-namespace Model.VHDLWords
+﻿namespace Model.VHDLWords.Signals
 {
-    public class Port : Signal
+    public class Port : FullSignal
     {
         public PortTypes PortType { get; set; }
 

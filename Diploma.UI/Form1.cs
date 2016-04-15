@@ -11,6 +11,7 @@ using System.IO;
 using Model;
 using Model.Options;
 using Model.VHDLWords;
+using Model.VHDLWords.Signals;
 using VHDLParser;
 using VHDLParser.Entities;
 using VHDLParser.Services;
@@ -30,6 +31,8 @@ namespace Diploma.UI
         private string curentVHDLFile = @"D:\111\222.vhd";
         private string vhdlCode = String.Empty;
         private string vhdlLib = String.Empty;
+        private string projectFolder = @"D:\Diploma\";
+
         private WatermarkOptions _watermarkOptions;
         private VHDLDocument _document;
 
@@ -108,6 +111,7 @@ namespace Diploma.UI
                 try
                 {
                     curentVHDLFile = openFileDialog1.FileName;
+                    File.Copy(curentVHDLFile, projectFolder + Path.GetFileName(curentVHDLFile));
                 }
                 catch (Exception ex)
                 {
@@ -150,6 +154,17 @@ namespace Diploma.UI
 
                 OutForm form = new OutForm(settings);
                 form.ShowDialog();
+            }
+        }
+
+        private void addFolderButton_Click(object sender, EventArgs e)
+        {
+            if (projectBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                var directory = projectBrowserDialog.SelectedPath;
+                FileService.DirectoryCopy(directory, projectFolder + Path.GetFileName(directory) , true);
+                
+                //MessageBox.Show(directory);
             }
         }
     }

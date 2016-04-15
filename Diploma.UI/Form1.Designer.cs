@@ -38,9 +38,11 @@
             this.openVHDLFileButton = new System.Windows.Forms.Button();
             this.watermarkButton = new System.Windows.Forms.Button();
             this.infoGroupBox = new System.Windows.Forms.GroupBox();
-            this.entityNameLabel = new System.Windows.Forms.Label();
             this.freeBitsLabel = new System.Windows.Forms.Label();
+            this.entityNameLabel = new System.Windows.Forms.Label();
             this.signaturePortsButton = new System.Windows.Forms.Button();
+            this.addFolderButton = new System.Windows.Forms.Button();
+            this.projectBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.infoGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,15 +135,6 @@
             this.infoGroupBox.TabStop = false;
             this.infoGroupBox.Text = "Inforamtion";
             // 
-            // entityNameLabel
-            // 
-            this.entityNameLabel.AutoSize = true;
-            this.entityNameLabel.Location = new System.Drawing.Point(11, 29);
-            this.entityNameLabel.Name = "entityNameLabel";
-            this.entityNameLabel.Size = new System.Drawing.Size(64, 13);
-            this.entityNameLabel.TabIndex = 0;
-            this.entityNameLabel.Text = "Entity Name";
-            // 
             // freeBitsLabel
             // 
             this.freeBitsLabel.AutoSize = true;
@@ -150,6 +143,15 @@
             this.freeBitsLabel.Size = new System.Drawing.Size(132, 13);
             this.freeBitsLabel.TabIndex = 1;
             this.freeBitsLabel.Text = "Free Bits for Watermarking";
+            // 
+            // entityNameLabel
+            // 
+            this.entityNameLabel.AutoSize = true;
+            this.entityNameLabel.Location = new System.Drawing.Point(11, 29);
+            this.entityNameLabel.Name = "entityNameLabel";
+            this.entityNameLabel.Size = new System.Drawing.Size(64, 13);
+            this.entityNameLabel.TabIndex = 0;
+            this.entityNameLabel.Text = "Entity Name";
             // 
             // signaturePortsButton
             // 
@@ -161,11 +163,23 @@
             this.signaturePortsButton.UseVisualStyleBackColor = true;
             this.signaturePortsButton.Click += new System.EventHandler(this.signaturePortsButton_Click);
             // 
+            // addFolderButton
+            // 
+            this.addFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.addFolderButton.Location = new System.Drawing.Point(20, 454);
+            this.addFolderButton.Name = "addFolderButton";
+            this.addFolderButton.Size = new System.Drawing.Size(75, 23);
+            this.addFolderButton.TabIndex = 10;
+            this.addFolderButton.Text = "Add Folder";
+            this.addFolderButton.UseVisualStyleBackColor = true;
+            this.addFolderButton.Click += new System.EventHandler(this.addFolderButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(311, 467);
+            this.ClientSize = new System.Drawing.Size(311, 492);
+            this.Controls.Add(this.addFolderButton);
             this.Controls.Add(this.signaturePortsButton);
             this.Controls.Add(this.infoGroupBox);
             this.Controls.Add(this.watermarkButton);
@@ -200,6 +214,8 @@
         private System.Windows.Forms.Label entityNameLabel;
         private System.Windows.Forms.Label freeBitsLabel;
         private System.Windows.Forms.Button signaturePortsButton;
+        private System.Windows.Forms.Button addFolderButton;
+        private System.Windows.Forms.FolderBrowserDialog projectBrowserDialog;
     }
 }
 

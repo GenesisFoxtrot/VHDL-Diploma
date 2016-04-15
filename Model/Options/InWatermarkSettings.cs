@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.VHDLWords;
+using Model.VHDLWords.Signals;
 
 namespace Model.Options
 {

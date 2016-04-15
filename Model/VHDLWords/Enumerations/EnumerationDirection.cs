@@ -1,4 +1,4 @@
-﻿namespace Model.VHDLWords
+﻿namespace Model.VHDLWords.Enumerations
 {
     public enum EnumerationDirections
     {

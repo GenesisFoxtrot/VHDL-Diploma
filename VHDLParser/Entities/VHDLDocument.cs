@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Model.VHDLWords;
+using Model.VHDLWords.Signals;
 using VHDLParser.Services;
 
 namespace VHDLParser.Entities
@@ -12,8 +13,8 @@ namespace VHDLParser.Entities
         public string Document { get; set; }
         public List<Entity> Components { get; set; }
         public List<Map> Maps { get; set; }
-        public List<Signal> Signals { get; set; }
-        public List<Signal> ConstValueGenerators { get; set; } 
+        public List<FullSignal> Signals { get; set; }
+        public List<FullSignal> ConstValueGenerators { get; set; } 
         public List<Map> FreeLuts { get; set; } 
         public Entity Entity { get; set; }
 
@@ -31,10 +32,10 @@ namespace VHDLParser.Entities
             Document = Document.Replace(oldSignal, oldSignal + newSignal); ;
         }
 
-        public void AddSignal(Signal signal)
+        public void AddSignal(FullSignal signal)
         {
             var oldSignal = Regex.Match(Document, SignalPattern).Value;
-            var newSignal = Helper.SignalToVHDL(signal);
+            var newSignal = signal.ToDefenitionVHDL();
             Document = Document.Replace(oldSignal, oldSignal + newSignal); ;
 
         }
@@ -111,5 +112,6 @@ namespace VHDLParser.Entities
             Document = Document.Replace(assigment.Text, assigment.NewText());
             assigment.Text = assigment.NewText();
         }
+
     }
 }

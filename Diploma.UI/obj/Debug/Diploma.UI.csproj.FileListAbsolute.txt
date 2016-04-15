@@ -14,3 +14,4 @@ C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\
 C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.PortForm.resources
 C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.WatermarkedTextForm.resources
 C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.OutForm.resources
+C:\Users\valerypyzhik\Documents\Visual Studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.ProjectForm.resources

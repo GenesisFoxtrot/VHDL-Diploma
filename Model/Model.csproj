@@ -43,16 +43,21 @@
     <Compile Include="Options\InWatermarkSettings.cs" />
     <Compile Include="Options\OutWatermarkSettings.cs" />
     <Compile Include="VHDLWords\Assigment.cs" />
+    <Compile Include="VHDLWords\AssignmentSignal.cs" />
     <Compile Include="VHDLWords\Entity.cs" />
-    <Compile Include="VHDLWords\Enumeration.cs" />
-    <Compile Include="VHDLWords\EnumerationDirection.cs" />
+    <Compile Include="VHDLWords\Enumerations\ComplexEnumeration.cs" />
+    <Compile Include="VHDLWords\Enumerations\EnumerationDirection.cs" />
+    <Compile Include="VHDLWords\Enumerations\EnumerationBase.cs" />
+    <Compile Include="VHDLWords\Enumerations\SimpleIndex.cs" />
     <Compile Include="VHDLWords\Map.cs" />
-    <Compile Include="VHDLWords\Port.cs" />
+    <Compile Include="VHDLWords\Signals\FullSignal.cs" />
+    <Compile Include="VHDLWords\Signals\PartialSignal.cs" />
+    <Compile Include="VHDLWords\Signals\Port.cs" />
     <Compile Include="VHDLWords\PortTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VHDLWords\Signal.cs" />
+    <Compile Include="VHDLWords\Signals\Signal.cs" />
     <Compile Include="VHDLEement\Decoder.cs" />
-    <Compile Include="VHDLWords\SignalBit.cs" />
+    <Compile Include="VHDLWords\VHDLWordBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

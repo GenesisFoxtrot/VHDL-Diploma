@@ -1,23 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Model.VHDLWords
+namespace Model.VHDLWords.Enumerations
 {
-    public class Enumeration
+    public class ComplexEnumeration : EnumerationBase
     {
         public EnumerationDirections Direction { get; set; }
         public int From { get; set; }
         public int To { get; set; }
 
-        public Enumeration()
+        public override int Bits 
+        {
+            get
+            {
+                return Math.Abs(To - From) + 1;
+            }
+        }
+
+        public ComplexEnumeration()
         {
             
         }
 
-        public Enumeration(int n, EnumerationDirections direction)
+        public ComplexEnumeration(int n, EnumerationDirections direction)
         {
             Direction = direction;
             if (direction == EnumerationDirections.To)
@@ -30,6 +34,16 @@ namespace Model.VHDLWords
                 To = 0;
                 From = n - 1;
             }
+        }
+
+        public override VHDLWordBase Parse()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string ToVHDL()
+        {
+            return "(" + From + " " + Direction.ToString().ToLower() + " " + To + ")";
         }
 
         public override string ToString()
