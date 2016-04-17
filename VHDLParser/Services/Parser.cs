@@ -131,10 +131,10 @@ namespace VHDLParser.Services
             return mapList;
         }
 
-        public Assigment ParseAssigment()
-        {
+        //public Assigment ParseAssigment()
+        //{
             
-        }
+        //}
 
         public List<FullSignal> ParseSignals(string vhdl)
         {

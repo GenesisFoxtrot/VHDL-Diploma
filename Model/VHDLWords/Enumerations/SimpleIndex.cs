@@ -13,9 +13,12 @@ namespace Model.VHDLWords.Enumerations
         {
             Index = index;
         }
-        public int Index { get; }
+        public int Index { get; private set; }
 
-        public override int Bits => 1;
+        public override int Bits
+        {
+            get { return 1; }
+        }
 
         public override VHDLWordBase Parse()
         {

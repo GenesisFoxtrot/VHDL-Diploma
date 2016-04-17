@@ -3,3 +3,8 @@ c:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Model\bin\Debug
 c:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 c:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Model\obj\Debug\Model.dll
 c:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Model\obj\Debug\Model.pdb
+D:\Diploma\VHDL-Diploma\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\Diploma\VHDL-Diploma\Model\obj\Debug\Model.dll
+D:\Diploma\VHDL-Diploma\Model\obj\Debug\Model.pdb
+D:\Diploma\VHDL-Diploma\Model\bin\Debug\Model.dll
+D:\Diploma\VHDL-Diploma\Model\bin\Debug\Model.pdb

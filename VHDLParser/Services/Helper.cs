@@ -55,7 +55,7 @@ namespace VHDLParser.Services
 
         public static string NewGuidName()
         {
-            return Guid.NewGuid().ToString().Replace("-", "_");
+            return "PM_" + Guid.NewGuid().ToString().Replace("-", "_");
         }
 
         public static string InitVector(string init, bool isOne)

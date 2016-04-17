@@ -12,8 +12,8 @@ namespace VHDLParser.Entities
             SignatureOutputSettings = new List<OutWatermarkSettings>();
         }
 
-        public List<InWatermarkSettings> WatermarkSettings { get; }
-        public List<OutWatermarkSettings> SignatureOutputSettings { get; } 
+        public List<InWatermarkSettings> WatermarkSettings { get; private set; }
+        public List<OutWatermarkSettings> SignatureOutputSettings { get; private set; } 
         public bool[] Signature { get; set; }
     }
 }

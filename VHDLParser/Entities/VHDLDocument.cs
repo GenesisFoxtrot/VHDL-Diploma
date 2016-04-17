@@ -80,11 +80,11 @@ namespace VHDLParser.Entities
             //tMap.Select(x => x.Text.Replace(selectedOut.Name, ));
             //document.Document.Replace()
 
-            Map map = new Map();
-            map.Name = Helper.NewGuidName();
-            map.Entity = outMap.FirstOrDefault().Entity;
-            map.Assigmnets = outMap.FirstOrDefault().Assigmnets;
-            AddMap(map);
+            //Map map = new Map();
+            //map.Name = Helper.NewGuidName();
+            //map.Entity = outMap.FirstOrDefault().Entity;
+            //map.Assigmnets = outMap.FirstOrDefault().Assigmnets;
+            //AddMap(map);
 
             outMap.ForEach(x =>
             {

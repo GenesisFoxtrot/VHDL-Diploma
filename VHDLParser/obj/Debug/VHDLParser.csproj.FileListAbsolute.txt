@@ -5,3 +5,10 @@ c:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLParser\bin\
 c:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLParser\obj\Debug\VHDLParser.csprojResolveAssemblyReference.cache
 c:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLParser\obj\Debug\VHDLParser.dll
 c:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLParser\obj\Debug\VHDLParser.pdb
+D:\Diploma\VHDL-Diploma\VHDLParser\obj\Debug\VHDLParser.csprojResolveAssemblyReference.cache
+D:\Diploma\VHDL-Diploma\VHDLParser\obj\Debug\VHDLParser.dll
+D:\Diploma\VHDL-Diploma\VHDLParser\obj\Debug\VHDLParser.pdb
+D:\Diploma\VHDL-Diploma\VHDLParser\bin\Debug\VHDLParser.dll
+D:\Diploma\VHDL-Diploma\VHDLParser\bin\Debug\VHDLParser.pdb
+D:\Diploma\VHDL-Diploma\VHDLParser\bin\Debug\Model.dll
+D:\Diploma\VHDL-Diploma\VHDLParser\bin\Debug\Model.pdb

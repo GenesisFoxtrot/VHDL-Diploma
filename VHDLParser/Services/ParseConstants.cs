@@ -38,7 +38,7 @@
         //---------------------------------------------------------------------
         public const string EntityPatternTop = MFS + "entity" + MFS + VHDLName + MFS + "is" + SEL;
         public const string EntityPatternBottom = MFS + "end" + MFS + VHDLName + MFS + AEL;
-        public const string EntityPattern = EntityPatternTop + MGeneric + Ports + EntityPatternBottom;
+        public const string EntityPattern = EntityPatternTop  + Ports + EntityPatternBottom;
         //---------------------------------------------------------------------
         public const string EntityName = "(?<=entity" + MFS + ")" + VHDLName + "(?=" + MFS + "is)";
         public const string ComponentName = "(?<=component" + MFS + ")" + VHDLName;

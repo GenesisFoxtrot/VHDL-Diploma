@@ -11,7 +11,8 @@ namespace VHDLParser.Services.Parsers
     {
         public Signal ParaseSignalFromAssignment(string assigmentVHDL)
         {
-            ParseMaps()
+            return new Signal();
+            //ParseMaps()
         }
 
     }

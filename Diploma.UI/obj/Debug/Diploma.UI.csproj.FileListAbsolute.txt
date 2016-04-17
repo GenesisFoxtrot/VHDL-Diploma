@@ -15,3 +15,20 @@ C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\
 C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.WatermarkedTextForm.resources
 C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.OutForm.resources
 C:\Users\valerypyzhik\Documents\Visual Studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.ProjectForm.resources
+D:\Diploma\VHDL-Diploma\Diploma.UI\bin\Debug\Diploma.UI.exe.config
+D:\Diploma\VHDL-Diploma\Diploma.UI\obj\Debug\Diploma.UI.exe
+D:\Diploma\VHDL-Diploma\Diploma.UI\obj\Debug\Diploma.UI.pdb
+D:\Diploma\VHDL-Diploma\Diploma.UI\bin\Debug\Diploma.UI.exe
+D:\Diploma\VHDL-Diploma\Diploma.UI\bin\Debug\Diploma.UI.pdb
+D:\Diploma\VHDL-Diploma\Diploma.UI\bin\Debug\Model.dll
+D:\Diploma\VHDL-Diploma\Diploma.UI\bin\Debug\VHDLParser.dll
+D:\Diploma\VHDL-Diploma\Diploma.UI\bin\Debug\Model.pdb
+D:\Diploma\VHDL-Diploma\Diploma.UI\bin\Debug\VHDLParser.pdb
+D:\Diploma\VHDL-Diploma\Diploma.UI\obj\Debug\Diploma.UI.csprojResolveAssemblyReference.cache
+D:\Diploma\VHDL-Diploma\Diploma.UI\obj\Debug\Diploma.UI.Form1.resources
+D:\Diploma\VHDL-Diploma\Diploma.UI\obj\Debug\Diploma.UI.OutForm.resources
+D:\Diploma\VHDL-Diploma\Diploma.UI\obj\Debug\Diploma.UI.PortForm.resources
+D:\Diploma\VHDL-Diploma\Diploma.UI\obj\Debug\Diploma.UI.ProjectForm.resources
+D:\Diploma\VHDL-Diploma\Diploma.UI\obj\Debug\Diploma.UI.Properties.Resources.resources
+D:\Diploma\VHDL-Diploma\Diploma.UI\obj\Debug\Diploma.UI.WatermarkedTextForm.resources
+D:\Diploma\VHDL-Diploma\Diploma.UI\obj\Debug\Diploma.UI.csproj.GenerateResource.Cache

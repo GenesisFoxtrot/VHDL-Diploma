@@ -21,6 +21,25 @@ namespace VHDLParser.Services
         }
         public VHDLDocument Watermark(WatermarkOptions options)
         {
+            var signals =
+                _document.Maps.Where(buf => buf.Name.Contains("IBUF"))
+                    .Select(
+                        x =>
+                            new KeyValuePair<string, string>(
+                                x.Assigmnets.FirstOrDefault(c => c.LeftSide.Contains("I")).RightSide,
+                                x.Assigmnets.FirstOrDefault(c => c.LeftSide.Contains("O")).RightSide)).ToList();
+                    
+             signals.AddRange(_document.Maps.Where(buf => buf.Name.Contains("OBUF"))
+                    .Select(
+                        x =>
+                            new KeyValuePair<string, string>(
+                                x.Assigmnets.FirstOrDefault(c => c.LeftSide.Contains("O")).RightSide,
+                                x.Assigmnets.FirstOrDefault(c => c.LeftSide.Contains("I")).RightSide)));
+
+            var stgnalsDictory = signals.ToDictionary(d=> d.Key, v => v.Value );
+
+
+
             //-----------------DECODER----------------------------------------
             FullSignal isWatermark = new FullSignal
             {
@@ -29,7 +48,7 @@ namespace VHDLParser.Services
                 Enumeration = null
             };
             _document.AddSignal(isWatermark);
-
+            options.WatermarkSettings.ForEach(x=> x.);
             Decoder decoder = new Decoder(isWatermark);
             decoder.CodedSignals.AddRange(options.WatermarkSettings.Where(x => x.IsUsed).ToList());
             //-----------------DECODER----------------------------------------
@@ -65,8 +84,6 @@ namespace VHDLParser.Services
                 EnumerationDirections.Downto);
 
 
-
-
             _document.AddSignal(watermarkedSignal);
 
             i = 0;
@@ -80,7 +97,7 @@ namespace VHDLParser.Services
                 };
                 _document.AddSignal(fictionOutSignal);
                 _document.Redirect(x.Port, fictionOutSignal);              //TODO
-                _document.AddMuxAssigment(x.Port, isWatermark + " = '1'", watermarkedSignal, fictionOutSignal); //TODO
+                _document.AddMuxAssigment(x.Port, isWatermark + " = '1'", watermarkedSignal.CreatePartial(new ComplexEnumeration(x.Port.Bits, EnumerationDirections.Downto)), fictionOutSignal); //TODO
                 i++;
             });
            

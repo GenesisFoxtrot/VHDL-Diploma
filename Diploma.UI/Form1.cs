@@ -28,7 +28,7 @@ namespace Diploma.UI
             _watermarkOptions = new WatermarkOptions();
         }
 
-        private string curentVHDLFile = @"D:\111\222.vhd";
+        private string curentVHDLFile = @"D:\diploma\mil.vhd";
         private string vhdlCode = String.Empty;
         private string vhdlLib = String.Empty;
         private string projectFolder = @"D:\Diploma\";

@@ -16,6 +16,6 @@ namespace Model.VHDLWords.Signals
             Enumeration = enumeration;
         }
 
-        public FullSignal ParentSinal { get; }
+        public FullSignal ParentSinal { get; private set; }
     }
 }

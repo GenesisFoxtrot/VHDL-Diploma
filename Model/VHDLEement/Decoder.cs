@@ -29,7 +29,7 @@ namespace Model.VHDLEement
             var comaSeparatedSignals = String.Empty;
             var code = String.Empty;
             var bits = 0;
-            var outSignal = SignalToReturnValue?.Name;
+            var outSignal = SignalToReturnValue == null? null :SignalToReturnValue.Name;
             if (CodedSignals.Any() && !String.IsNullOrEmpty(outSignal))
             {
                 CodedSignals.ForEach(x =>
@@ -40,19 +40,19 @@ namespace Model.VHDLEement
                     code += x.ActivaionCode;
                 });
                 concatedSignals = concatedSignals.Substring(0, concatedSignals.Length - 4);
-                comaSeparatedSignals = comaSeparatedSignals.Substring(0, comaSeparatedSignals.Length - 2);
+                comaSeparatedSignals = comaSeparatedSignals.Substring(0, comaSeparatedSignals.Length - 1);
 
                 const string newS = "\n  ";
 
                 text =
                     newS +
                     "process(" + comaSeparatedSignals + ")" + newS +
-                    "variable bcat : std_logic_vector(0 to " + bits + ");" + newS +
+                    "variable bcat : std_logic_vector(0 to " + (bits-1) + ");" + newS +
                     "begin" + newS +
                     "  bcat :=" + concatedSignals + ";" + newS +
                     "  case bcat is" + newS +
-                    "      when \"" + code + "\" => "+ outSignal  + " <= 1;" + newS +
-                    "      when others => " +          outSignal  + " <= 0;" + newS +
+                    "      when \"" + code + "\" => "+ outSignal  + " <= '1';" + newS +
+                    "      when others => " +          outSignal  + " <= '0';" + newS +
                     "  end case;"  + newS +
                     "end process;" + newS + "\n";
             }

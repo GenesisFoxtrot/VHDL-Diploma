@@ -14,7 +14,7 @@ namespace Model.Options
         {
             Port = port;
         }
-        public Port Port { get; }
+        public Port Port { get; private set; }
         public bool IsUsed { get; set; }
         public string ActivaionCode { get; set; }
     }
