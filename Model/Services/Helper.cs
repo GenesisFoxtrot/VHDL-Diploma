@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Model.VHDLSetcions.Maps;
-using Model.VHDLSetcions.Maps.Assignments;
-using Model.VHDLSetcions.Maps.Assignments.AssignmentSides;
-using Model.VHDLSetcions.Signals.AssignmentSignals;
+using Diploma.VHDLWrapper.VHDLSetcions.Maps;
+using Diploma.VHDLWrapper.VHDLSetcions.Maps.Assignments;
+using Diploma.VHDLWrapper.VHDLSetcions.Signals.AssignmentSignals;
+using PC = Diploma.VHDLWrapper.Services.Parsers.ParsConstants;
 
-namespace Model.Services
+namespace Diploma.VHDLWrapper.Services
 {
     public static class Helper
     {
@@ -20,6 +20,13 @@ namespace Model.Services
             return "      " + assignment.LeftSide.Text + " => " + assignment.RightSide.Text;
         }
 
+
+        public static string MaybeComma(string text)
+        {
+            var pattern = ',' + "(?=" + PC.MFS + "$)";
+            var isCommaNeeded = Regex.IsMatch(text, pattern);
+            return isCommaNeeded ? "," : "";
+        }
         public static string MapToVHDL(Map map)
         {
             var newMap = "  " + map.Name + " : " + map.EntityName + "\n";

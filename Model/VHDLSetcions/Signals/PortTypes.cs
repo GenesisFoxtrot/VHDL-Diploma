@@ -1,4 +1,4 @@
-﻿namespace Model.VHDLSetcions.Signals
+﻿namespace Diploma.VHDLWrapper.VHDLSetcions.Signals
 {
     public enum PortTypes
     {

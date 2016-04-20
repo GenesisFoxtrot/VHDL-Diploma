@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using Model;
-using Model.Entities;
-using Model.Options;
-using Model.Services;
-using Model.VHDLSetcions;
-using Model.VHDLSetcions.Signals;
-
+using Diploma.LUTWatermarking.Options;
+using Diploma.LUTWatermarking.Services;
+using Diploma.VHDLExtensions.DocumentExtensions.IOBuffers;
+using Diploma.VHDLWrapper.Services;
+using Diploma.VHDLWrapper.Services.Parsers.Valiadators;
+using Diploma.VHDLWrapper.VHDLSetcions;
+using Diploma.VHDLWrapper.VHDLSetcions.Signals;
 
 namespace Diploma.UI
 {
@@ -49,6 +49,8 @@ namespace Diploma.UI
                 _document = new VHDLDocument(vhdlCode);
                 _document.Parse(vhdlLib);
                 _watermarkOptions = new WatermarkOptions(_document);
+                Validator validator =new Validator();
+                var results = validator.Validate(_document);
 
                 //TODO Null Checks
                 if (_document.Entity == null)
@@ -76,7 +78,7 @@ namespace Diploma.UI
             if (inputListBox.SelectedItem != null)
             {
                 var port = inputListBox.SelectedItem as Port;
-                var settings = _watermarkOptions.WatermarkSettings.FirstOrDefault(x => x.Port == port);
+                var settings = _watermarkOptions.WatermarkSettings.FirstOrDefault(x => x.Signal == port);
                 if (settings == null)
                 {
                     settings = new InWatermarkSettings(port);
@@ -117,6 +119,9 @@ namespace Diploma.UI
             {
                 //_watermarkOptions.SignatureOutputSettings.ForEach(x=>x.Port.Name = _document.IOBuffesLayer.GetInsideSignal(x.Port).Name);
                 //_watermarkOptions.WatermarkSettings.ForEach(x => x.Port.Name = _document.IOBuffesLayer.GetInsideSignal(x.Port).Name);
+
+                _watermarkOptions.IOBuffesLayer = new IOBuffesLayer(_document);
+                _watermarkOptions.IOBuffesLayer.Parse();
                 WatermarkService service = new WatermarkService(_document);
                 _document = service.Watermark(_watermarkOptions);
                 WatermarkedTextForm form = new WatermarkedTextForm(_document);
@@ -138,7 +143,7 @@ namespace Diploma.UI
             if (outputListBox.SelectedItem != null)
             {
                 var port = outputListBox.SelectedItem as Port;
-                var settings = _watermarkOptions.SignatureOutputSettings.FirstOrDefault(x => x.Port == port);
+                var settings = _watermarkOptions.SignatureOutputSettings.FirstOrDefault(x => x.Signal == port);
                 if (settings == null)
                 {
                     settings = new OutWatermarkSettings(port);

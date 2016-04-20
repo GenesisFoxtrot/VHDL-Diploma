@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
-using PC = Model.Services.ParsConstants;
+using PC = Diploma.VHDLWrapper.Services.Parsers.ParsConstants;
 
-namespace Model.VHDLSetcions.Signals.Enumerations
+namespace Diploma.VHDLWrapper.VHDLSetcions.Signals.Enumerations
 {
     public class ComplexEnumeration : EnumerationBase
     {
@@ -18,6 +17,17 @@ namespace Model.VHDLSetcions.Signals.Enumerations
         public ComplexEnumeration()
         {
             
+        }
+
+        public override EnumerationBase GetBit(int num)
+        {
+            if (num > Bits-1)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            var sign = Direction == EnumerationDirections.To? 1: -1;
+            return new SimpleIndex(From + sign * num);
+
         }
 
         public ComplexEnumeration(int from, int to, EnumerationDirections directions)

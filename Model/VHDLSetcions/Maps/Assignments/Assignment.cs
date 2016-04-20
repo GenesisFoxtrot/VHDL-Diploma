@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using Model.VHDLSetcions.Maps.Assignments.AssignmentSides;
-using PC = Model.Services.ParsConstants;
+using Diploma.VHDLWrapper.VHDLSetcions.Maps.Assignments.AssignmentSides;
+using PC = Diploma.VHDLWrapper.Services.Parsers.ParsConstants;
 
-namespace Model.VHDLSetcions.Maps.Assignments
+namespace Diploma.VHDLWrapper.VHDLSetcions.Maps.Assignments
 {
     public class Assignment : AssignmentBase
     {
@@ -51,6 +51,11 @@ namespace Model.VHDLSetcions.Maps.Assignments
 
             var assignment = Create(map, text, leftSideStr, rightSideStr);
             return assignment;
+        }
+
+        public override string ToString()
+        {
+            return Left + " => " + Right;
         }
 
         public bool Validation()

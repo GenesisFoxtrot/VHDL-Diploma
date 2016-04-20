@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Model.VHDLSetcions.Signals;
-using PC = Model.Services.ParsConstants;
+using Diploma.VHDLWrapper.VHDLSetcions.Signals;
+using PC = Diploma.VHDLWrapper.Services.Parsers.ParsConstants;
 
-namespace Model.VHDLSetcions
+namespace Diploma.VHDLWrapper.VHDLSetcions
 {
     public class Entity : VHDLSection
     {
         public override VHDLDocument Document { get; }
-        public override VHDLSection ParentSection => Document;
+        public override IVHDLSection ParentSection => Document;
 
         public Entity(VHDLDocument document)
         {

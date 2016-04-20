@@ -1,10 +1,8 @@
-﻿using Model.Entities;
-
-namespace Model.VHDLSetcions.Maps.Assignments.AssignmentSides
+﻿namespace Diploma.VHDLWrapper.VHDLSetcions.Maps.Assignments.AssignmentSides
 {
     public class AssignmentSideBase : VHDLSection
     { 
-        public override VHDLSection ParentSection => Assignment;
+        public override IVHDLSection ParentSection => Assignment;
         public AssignmentBase Assignment {get; protected set; }
 
         public AssignmentSideBase(AssignmentBase assignment, string text)

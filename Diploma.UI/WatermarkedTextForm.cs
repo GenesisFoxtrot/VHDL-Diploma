@@ -7,8 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Model.Entities;
-using Model.VHDLSetcions;
+using Diploma.VHDLWrapper.VHDLSetcions;
 
 namespace Diploma.UI
 {

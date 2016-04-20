@@ -1,7 +1,8 @@
-﻿using System.Text.RegularExpressions;
-using PC = Model.Services.ParsConstants;
+﻿using System;
+using System.Text.RegularExpressions;
+using PC = Diploma.VHDLWrapper.Services.Parsers.ParsConstants;
 
-namespace Model.VHDLSetcions.Signals.Enumerations
+namespace Diploma.VHDLWrapper.VHDLSetcions.Signals.Enumerations
 {
     public class SimpleIndex : EnumerationBase
     {
@@ -16,7 +17,14 @@ namespace Model.VHDLSetcions.Signals.Enumerations
             Index = index;
         }
 
-
+        public override EnumerationBase GetBit(int num)
+        {
+            if (num > Bits - 1)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            return this;
+        }
         public static SimpleIndex Parse(string text)
         {
             var indexStr = Regex.Match(text, Pattern).Value;

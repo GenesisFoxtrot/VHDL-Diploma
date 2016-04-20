@@ -2,26 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Model.Entities;
-using Model.Services.Parsers;
-using Model.VHDLSetcions;
-using Model.VHDLSetcions.Maps;
-using Model.VHDLSetcions.Maps.Assignments;
-using Model.VHDLSetcions.Signals;
-using Model.VHDLSetcions.Signals.Enumerations;
+using Diploma.VHDLWrapper.VHDLSetcions;
+using Diploma.VHDLWrapper.VHDLSetcions.Maps;
+using Diploma.VHDLWrapper.VHDLSetcions.Signals;
 
-namespace Model.Services
+
+namespace Diploma.VHDLWrapper.Services.Parsers
 {
     public class Parser : ParsConstants
     {
-        public override VHDLSection ParentSection => null; //TO DELETE 
+        public override IVHDLSection ParentSection => null; //TO DELETE 
 
-        public VHDLDocument Document { get; private set; }
+        public VHDLDocument Document { get; }
 
         public Parser(VHDLDocument document)
         {
             Document = document;
         }
+
+        
 
         public List<Entity> ParseCompenets(string vhdl)
         {

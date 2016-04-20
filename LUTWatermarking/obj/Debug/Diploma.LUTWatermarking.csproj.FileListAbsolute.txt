@@ -1,0 +1,9 @@
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\LUTWatermarking\obj\Debug\Diploma.LUTWatermarking.csprojResolveAssemblyReference.cache
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\LUTWatermarking\bin\Debug\Diploma.LUTWatermarking.dll
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\LUTWatermarking\bin\Debug\Diploma.LUTWatermarking.pdb
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\LUTWatermarking\bin\Debug\Diploma.VHDLExtensions.dll
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\LUTWatermarking\bin\Debug\Diploma.VHDLWrapper.dll
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\LUTWatermarking\bin\Debug\Diploma.VHDLWrapper.pdb
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\LUTWatermarking\bin\Debug\Diploma.VHDLExtensions.pdb
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\LUTWatermarking\obj\Debug\Diploma.LUTWatermarking.dll
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\LUTWatermarking\obj\Debug\Diploma.LUTWatermarking.pdb

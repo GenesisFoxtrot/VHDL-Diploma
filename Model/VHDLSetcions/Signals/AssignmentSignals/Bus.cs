@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using Model.VHDLSetcions.Maps;
-using Model.VHDLSetcions.Signals.Enumerations;
+using Diploma.VHDLWrapper.VHDLSetcions.Maps;
+using Diploma.VHDLWrapper.VHDLSetcions.Signals.Enumerations;
 
-namespace Model.VHDLSetcions.Signals.AssignmentSignals
+namespace Diploma.VHDLWrapper.VHDLSetcions.Signals.AssignmentSignals
 {
     public class Bus
     {

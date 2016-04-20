@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model.VHDLSetcions.Signals.AssignmentSignals;
+﻿using System.Collections.Generic;
+using Diploma.VHDLWrapper.VHDLSetcions.Signals.AssignmentSignals;
 
-namespace Model.VHDLSetcions.Signals
+namespace Diploma.VHDLWrapper.VHDLSetcions.Signals
 {
     public class SignalEntity
     {
         public SignalDefenition Defenition { get; set; }
 
-        private List<AssignmentSignal> Signals;
+        public List<AssignmentSignal> Signals { get; set; }
 
         public SignalEntity(SignalDefenition defenition)
         {

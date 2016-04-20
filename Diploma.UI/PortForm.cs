@@ -8,9 +8,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Diploma.LUTWatermarking.Options;
 using Diploma.UI.Properties;
-using Model;
-using Model.Options;
 
 namespace Diploma.UI
 {
@@ -25,7 +24,7 @@ namespace Diploma.UI
         private InWatermarkSettings _settings { get; set; }
         private void PortForm_Load(object sender, EventArgs e)
         {
-            portNameLabel.Text = Resources.PortForm_PortForm_Load_Port_Name__ +  _settings.Port.Name;
+            portNameLabel.Text = Resources.PortForm_PortForm_Load_Port_Name__ +  _settings.Signal.Name;
             useForWatermarkingCheckBox.Checked = _settings.IsUsed;
             activationCodeTextBox.Text = _settings.ActivaionCode;
             useForWatermarkingCheckBox_CheckedChanged(null, null);
@@ -40,7 +39,7 @@ namespace Diploma.UI
 
             const string codePattern = "^(|[0-1]+)$";
             if (!Regex.IsMatch(activationCodeTextBox.Text, codePattern) ||
-                activationCodeTextBox.Text.Length > _settings.Port.Bits)
+                activationCodeTextBox.Text.Length > _settings.Signal.Bits)
             {
                 IgnoteTextChange = true;
                 activationCodeTextBox.Text = OldText;

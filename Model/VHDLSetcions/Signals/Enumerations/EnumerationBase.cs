@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Model.VHDLSetcions.Signals.Enumerations
+namespace Diploma.VHDLWrapper.VHDLSetcions.Signals.Enumerations
 {
     public abstract class EnumerationBase : ICloneable
     {
@@ -11,6 +11,7 @@ namespace Model.VHDLSetcions.Signals.Enumerations
 
         public abstract bool IsSameBus(EnumerationBase enumeration);
         public abstract object Clone();
+        public abstract EnumerationBase GetBit(int num);
         public EnumerationBase CloneEnumeration()
         {
             return Clone() as EnumerationBase;

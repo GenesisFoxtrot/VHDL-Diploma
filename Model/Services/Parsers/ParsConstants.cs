@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Model.Entities;
-using Model.VHDLSetcions;
+using Diploma.VHDLWrapper.VHDLSetcions;
 
-namespace Model.Services
+namespace Diploma.VHDLWrapper.Services.Parsers
 {
     public abstract class ParsConstants : VHDLSection
     {

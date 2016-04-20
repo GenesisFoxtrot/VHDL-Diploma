@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using Model.Services.Parsers;
-using Model.VHDLSetcions.Maps.Assignments.AssignmentSides;
-using Model.VHDLSetcions.Signals.Enumerations;
-using PC = Model.Services.ParsConstants;
+using Diploma.VHDLWrapper.Services.Parsers;
+using Diploma.VHDLWrapper.VHDLSetcions.Maps.Assignments.AssignmentSides;
+using Diploma.VHDLWrapper.VHDLSetcions.Signals.Enumerations;
+using PC = Diploma.VHDLWrapper.Services.Parsers.ParsConstants;
 
-namespace Model.VHDLSetcions.Signals.AssignmentSignals
+namespace Diploma.VHDLWrapper.VHDLSetcions.Signals.AssignmentSignals
 {
     public class PartialSignal : AssignmentSignal
     {

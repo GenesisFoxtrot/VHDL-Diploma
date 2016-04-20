@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model.VHDLSetcions.Signals;
+﻿using Diploma.VHDLWrapper.VHDLSetcions.Signals;
 
-namespace Model.VHDLSetcions.Maps
+namespace Diploma.VHDLWrapper.VHDLSetcions.Maps
 {
     public class BusDefenition : SignalDefenition
     {

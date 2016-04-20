@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Model.VHDLSetcions.Maps.Assignments.AssignmentSides;
-using PC = Model.Services.ParsConstants;
-namespace Model.VHDLSetcions.Maps
+﻿using System.Text.RegularExpressions;
+using Diploma.VHDLWrapper.VHDLSetcions.Maps.Assignments.AssignmentSides;
+using PC = Diploma.VHDLWrapper.Services.Parsers.ParsConstants;
+namespace Diploma.VHDLWrapper.VHDLSetcions.Maps
 {
     public class ConstValue : VHDLSection
     {
         public AssignmentSide AssignmentSide { get; }
-        public override VHDLSection ParentSection => AssignmentSide;
+        public override IVHDLSection ParentSection => AssignmentSide;
         public int Bits => 1;
 
         private ConstValue(AssignmentSide assignmentSide, string text)

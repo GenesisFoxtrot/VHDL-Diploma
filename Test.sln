@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{3AACAB48-5E12-4D61-B85B-E9FD6A6C328B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diploma.VHDLWrapper", "Model\Diploma.VHDLWrapper.csproj", "{3AACAB48-5E12-4D61-B85B-E9FD6A6C328B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diploma.UI", "Diploma.UI\Diploma.UI.csproj", "{CF058003-3B5A-4E2E-A4E7-274D76F395FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diploma.VHDLExtensions", "VHDLExtensions\Diploma.VHDLExtensions.csproj", "{49967DCA-D7D2-4A66-8926-F75DBA719C8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diploma.LUTWatermarking", "LUTWatermarking\Diploma.LUTWatermarking.csproj", "{580131FC-5A6D-44DB-B634-5B5F5DCABCE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{CF058003-3B5A-4E2E-A4E7-274D76F395FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF058003-3B5A-4E2E-A4E7-274D76F395FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF058003-3B5A-4E2E-A4E7-274D76F395FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49967DCA-D7D2-4A66-8926-F75DBA719C8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49967DCA-D7D2-4A66-8926-F75DBA719C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49967DCA-D7D2-4A66-8926-F75DBA719C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49967DCA-D7D2-4A66-8926-F75DBA719C8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{580131FC-5A6D-44DB-B634-5B5F5DCABCE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{580131FC-5A6D-44DB-B634-5B5F5DCABCE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{580131FC-5A6D-44DB-B634-5B5F5DCABCE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{580131FC-5A6D-44DB-B634-5B5F5DCABCE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

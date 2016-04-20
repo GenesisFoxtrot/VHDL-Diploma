@@ -1,10 +1,23 @@
-﻿namespace Model.VHDLSetcions
+﻿using System.Runtime.InteropServices;
+
+namespace Diploma.VHDLWrapper.VHDLSetcions
 {
-    public abstract class VHDLSection
+    public abstract class VHDLSection : IVHDLSection
     {
         public string Text { get; protected set; }
-        public abstract VHDLSection ParentSection { get; }
+        public abstract IVHDLSection ParentSection { get; }
         public virtual VHDLDocument Document => ParentSection.Document;
+
+        public bool IsBelongs(IVHDLSection section)
+        {
+            IVHDLSection parent = this.ParentSection;
+            while (parent != null && parent != section)
+            {
+                parent = parent.ParentSection;
+            }
+            return parent == section;
+        }
+
         public virtual void Change(string text)
         {
             if (ParentSection != null)

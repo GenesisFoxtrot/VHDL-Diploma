@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Model.Services
+namespace Diploma.VHDLWrapper.Services
 {
     public class FileService
     {

@@ -8,8 +8,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Diploma.LUTWatermarking.Options;
 using Diploma.UI.Properties;
-using Model.Options;
 
 namespace Diploma.UI
 {
@@ -24,7 +24,7 @@ namespace Diploma.UI
 
         private void OutForm_Load(object sender, EventArgs e)
         {
-            portNameLabel.Text = Resources.PortForm_PortForm_Load_Port_Name__ + _settings.Port.Name;
+            portNameLabel.Text = Resources.PortForm_PortForm_Load_Port_Name__ + _settings.Signal.Name;
             useForSignatureCheckBox.Checked = _settings.IsUsed;
             signatureTextBox.Text = _settings.SignatureCode;
             useForSignatureCheckBox_CheckedChanged(null, null);
@@ -39,7 +39,7 @@ namespace Diploma.UI
 
             const string codePattern = "^(|[0-1]+)$";
             if (!Regex.IsMatch(signatureTextBox.Text, codePattern) ||
-                signatureTextBox.Text.Length > _settings.Port.Bits)
+                signatureTextBox.Text.Length > _settings.Signal.Bits)
             {
                 IgnoteTextChange = true;
                 signatureTextBox.Text = OldText;

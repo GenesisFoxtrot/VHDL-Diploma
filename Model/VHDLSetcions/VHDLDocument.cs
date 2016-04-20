@@ -1,25 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Model.Entities;
-using Model.Services;
-using Model.VHDLEement;
-using Model.VHDLSetcions.Maps;
-using Model.VHDLSetcions.Signals;
-using PC = Model.Services.ParsConstants;
+using Diploma.VHDLWrapper.Services;
+using Diploma.VHDLWrapper.Services.Parsers;
+using Diploma.VHDLWrapper.VHDLSetcions.Maps;
+using Diploma.VHDLWrapper.VHDLSetcions.Signals;
+using PC = Diploma.VHDLWrapper.Services.Parsers.ParsConstants;
 
-namespace Model.VHDLSetcions
+namespace Diploma.VHDLWrapper.VHDLSetcions
 {
     public class VHDLDocument : VHDLSection 
     {
-        public override VHDLSection ParentSection => null;
+        public override IVHDLSection ParentSection => null;
         public override VHDLDocument Document => this;
         public List<Entity> Components { get; set; }
         public List<Map> Maps { get; set; }
         public Entity Entity { get; set; }
         public Router Router { get; set; }
         public DocumnetSignals Signals { get; set; }
-        public IOBuffesLayer IOBuffesLayer { get; set; }
+        
 
         public VHDLDocument(string vhdl)
         {
@@ -33,10 +32,7 @@ namespace Model.VHDLSetcions
             Entity = parser.ParEntities(Text).FirstOrDefault();
             Components = parser.ParseCompenets(vhdlLib);
             Signals = new DocumnetSignals(Document, parser.ParseSignals(Text));
-            Maps = parser.ParseMaps(Text);
-            IOBuffesLayer = new IOBuffesLayer(Document);
-            IOBuffesLayer.Parse();
-            
+            Maps = parser.ParseMaps(Text);            
         }
 
         public void AddMap(Map map)

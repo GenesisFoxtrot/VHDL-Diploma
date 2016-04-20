@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Model.Entities;
-using Model.Services;
-using Model.VHDLSetcions.Maps.Assignments;
-using PC = Model.Services.ParsConstants;
+using Diploma.VHDLWrapper.Services;
+using Diploma.VHDLWrapper.VHDLSetcions.Maps.Assignments;
+using PC = Diploma.VHDLWrapper.Services.Parsers.ParsConstants;
 
-namespace Model.VHDLSetcions.Maps
+namespace Diploma.VHDLWrapper.VHDLSetcions.Maps
 {
     public class Map : VHDLSection
     {
@@ -17,7 +16,7 @@ namespace Model.VHDLSetcions.Maps
         public List<GenericAssignment> GenericAssignments { get; set; }
         public override VHDLDocument Document { get; }
 
-        public override VHDLSection ParentSection => Document;
+        public override IVHDLSection ParentSection => Document;
         public Map(VHDLDocument document, string text)
         {
             Document = document;
@@ -41,6 +40,16 @@ namespace Model.VHDLSetcions.Maps
             newMap.Assigmnets =
                 PC.MatchesToStrings(Regex.Matches(assigments, PC.OneAssimnet)).Select(asgn => Assignment.Parse(newMap, asgn)).ToList();
             return newMap;
+        }
+
+        public void AddAssigment(Assignment assignment)
+        {
+            Assigmnets.Add(assignment);
+            var assignments = Regex.Match(Text, PC.Assigments).Value;
+            var oneAssignment = Regex.Match(assignments, PC.OneAssimnet).Value;
+          
+            var newText = Text.Replace(oneAssignment, oneAssignment + "\n" + assignment + Helper.MaybeComma(oneAssignment));
+            Change(newText);
         }
 
     }

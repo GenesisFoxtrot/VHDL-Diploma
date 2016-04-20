@@ -1,8 +1,6 @@
 C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Diploma.UI.exe.config
 C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Diploma.UI.exe
 C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Diploma.UI.pdb
-C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Model.dll
-C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Model.pdb
 C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.csprojResolveAssemblyReference.cache
 C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.Form1.resources
 C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\obj\Debug\Diploma.UI.Properties.Resources.resources
@@ -30,3 +28,9 @@ D:\Diploma\VHDL-Diploma\Diploma.UI\obj\Debug\Diploma.UI.ProjectForm.resources
 D:\Diploma\VHDL-Diploma\Diploma.UI\obj\Debug\Diploma.UI.Properties.Resources.resources
 D:\Diploma\VHDL-Diploma\Diploma.UI\obj\Debug\Diploma.UI.WatermarkedTextForm.resources
 D:\Diploma\VHDL-Diploma\Diploma.UI\obj\Debug\Diploma.UI.csproj.GenerateResource.Cache
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Diploma.LUTWatermarking.dll
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Diploma.VHDLExtensions.dll
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Diploma.VHDLWrapper.dll
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Diploma.LUTWatermarking.pdb
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Diploma.VHDLWrapper.pdb
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\Diploma.UI\bin\Debug\Diploma.VHDLExtensions.pdb

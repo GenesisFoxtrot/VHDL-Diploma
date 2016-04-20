@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Diploma.UI</RootNamespace>
     <AssemblyName>Diploma.UI</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -53,6 +53,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="LUTWatermarking.cs" />
     <Compile Include="OutForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,9 +121,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj">
+    <ProjectReference Include="..\LUTWatermarking\Diploma.LUTWatermarking.csproj">
+      <Project>{580131fc-5a6d-44db-b634-5b5f5dcabce0}</Project>
+      <Name>Diploma.LUTWatermarking</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Diploma.VHDLWrapper.csproj">
       <Project>{3aacab48-5e12-4d61-b85b-e9fd6a6c328b}</Project>
-      <Name>Model</Name>
+      <Name>Diploma.VHDLWrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VHDLExtensions\Diploma.VHDLExtensions.csproj">
+      <Project>{49967dca-d7d2-4a66-8926-f75dba719c8d}</Project>
+      <Name>Diploma.VHDLExtensions</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

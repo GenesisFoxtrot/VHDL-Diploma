@@ -1,4 +1,4 @@
-﻿namespace Model.VHDLSetcions.Signals.Enumerations
+﻿namespace Diploma.VHDLWrapper.VHDLSetcions.Signals.Enumerations
 {
     public enum EnumerationDirections
     {

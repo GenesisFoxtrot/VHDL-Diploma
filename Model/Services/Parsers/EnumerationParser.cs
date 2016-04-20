@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model.VHDLSetcions.Signals.Enumerations;
+﻿using Diploma.VHDLWrapper.VHDLSetcions.Signals.Enumerations;
 
-namespace Model.Services.Parsers
+namespace Diploma.VHDLWrapper.Services.Parsers
 {
     public class EnumerationParser
     {

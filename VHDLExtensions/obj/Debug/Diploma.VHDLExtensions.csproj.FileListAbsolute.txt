@@ -1,0 +1,7 @@
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLExtensions\bin\Debug\Diploma.VHDLExtensions.dll
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLExtensions\bin\Debug\Diploma.VHDLExtensions.pdb
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLExtensions\bin\Debug\Diploma.VHDLWrapper.dll
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLExtensions\bin\Debug\Diploma.VHDLWrapper.pdb
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLExtensions\obj\Debug\Diploma.VHDLExtensions.csprojResolveAssemblyReference.cache
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLExtensions\obj\Debug\Diploma.VHDLExtensions.dll
+C:\Users\valerypyzhik\documents\visual studio 2015\Projects\Test\VHDLExtensions\obj\Debug\Diploma.VHDLExtensions.pdb

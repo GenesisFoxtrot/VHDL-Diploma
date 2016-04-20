@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using Model.VHDLSetcions.Signals.Enumerations;
-using PC = Model.Services.ParsConstants;
+using Diploma.VHDLWrapper.VHDLSetcions.Signals.Enumerations;
+using PC = Diploma.VHDLWrapper.Services.Parsers.ParsConstants;
 
-namespace Model.VHDLSetcions.Signals
+namespace Diploma.VHDLWrapper.VHDLSetcions.Signals
 {
     public class Port : SignalDefenition
     {
