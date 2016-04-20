@@ -124,10 +124,9 @@
       <Project>{3aacab48-5e12-4d61-b85b-e9fd6a6c328b}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\VHDLParser\VHDLParser.csproj">
-      <Project>{6ea2e6c2-60d8-4763-b789-57573c1a8b18}</Project>
-      <Name>VHDLParser</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Class1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

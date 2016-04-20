@@ -48,8 +48,6 @@
     <Compile Include="Services\ParseConstants.cs" />
     <Compile Include="Services\Parser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entities\VHDLDocument.cs" />
-    <Compile Include="Entities\WatermarkOptions.cs" />
     <Compile Include="Services\WatermarkService.cs" />
   </ItemGroup>
   <ItemGroup>

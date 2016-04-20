@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using Diploma.UI.Properties;
 using Model;
 using Model.Options;
-using Model.VHDLWords;
 
 namespace Diploma.UI
 {

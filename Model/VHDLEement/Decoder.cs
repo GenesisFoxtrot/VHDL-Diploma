@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.Options;
-using Model.VHDLWords;
-using Model.VHDLWords.Signals;
+using Model.VHDLSetcions.Signals;
 
 namespace Model.VHDLEement
 {

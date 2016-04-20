@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using Model.VHDLWords;
+using Model.VHDLWords.Maps;
 using Model.VHDLWords.Signals;
 
 namespace VHDLParser.Services

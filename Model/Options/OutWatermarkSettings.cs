@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model.VHDLWords;
-using Model.VHDLWords.Signals;
+using Model.VHDLSetcions.Signals;
 
 namespace Model.Options
 {
@@ -14,7 +13,7 @@ namespace Model.Options
         {
             Port = port;
         }
-        public Port Port { get; private set; }
+        public Port Port { get; set; }
         public bool IsUsed { get; set; }
         public string SignatureCode { get; set; }
     }

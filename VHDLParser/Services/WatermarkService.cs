@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using Model.Entities;
 using Model.VHDLWords;
 using Model.VHDLWords.Enumerations;
+using Model.VHDLWords.Maps;
 using Model.VHDLWords.Signals;
-using VHDLParser.Entities;
 using Decoder = Model.VHDLEement.Decoder;
 
 namespace VHDLParser.Services
@@ -21,25 +22,6 @@ namespace VHDLParser.Services
         }
         public VHDLDocument Watermark(WatermarkOptions options)
         {
-            var signals =
-                _document.Maps.Where(buf => buf.Name.Contains("IBUF"))
-                    .Select(
-                        x =>
-                            new KeyValuePair<string, string>(
-                                x.Assigmnets.FirstOrDefault(c => c.LeftSide.Contains("I")).RightSide,
-                                x.Assigmnets.FirstOrDefault(c => c.LeftSide.Contains("O")).RightSide)).ToList();
-                    
-             signals.AddRange(_document.Maps.Where(buf => buf.Name.Contains("OBUF"))
-                    .Select(
-                        x =>
-                            new KeyValuePair<string, string>(
-                                x.Assigmnets.FirstOrDefault(c => c.LeftSide.Contains("O")).RightSide,
-                                x.Assigmnets.FirstOrDefault(c => c.LeftSide.Contains("I")).RightSide)));
-
-            var stgnalsDictory = signals.ToDictionary(d=> d.Key, v => v.Value );
-
-
-
             //-----------------DECODER----------------------------------------
             FullSignal isWatermark = new FullSignal
             {
@@ -48,7 +30,7 @@ namespace VHDLParser.Services
                 Enumeration = null
             };
             _document.AddSignal(isWatermark);
-            options.WatermarkSettings.ForEach(x=> x.);
+
             Decoder decoder = new Decoder(isWatermark);
             decoder.CodedSignals.AddRange(options.WatermarkSettings.Where(x => x.IsUsed).ToList());
             //-----------------DECODER----------------------------------------
@@ -106,16 +88,16 @@ namespace VHDLParser.Services
 
         public void ChangeLutConstIputs(Map lut, Signal signal, List<FullSignal> constSignals)
         {
-            var inputAssigmnet = lut.Assigmnets.FirstOrDefault(assgn => constSignals.Select(c=>c.Name).Contains(assgn.RightSide));
-            inputAssigmnet.RightSide = signal.Name;
+            var inputAssigmnet = lut.Assigmnets.FirstOrDefault(assgn => constSignals.Select(c=>c.Name).Contains(assgn.RightSide.GetSignal()));
+            inputAssigmnet.RightSide.Text = signal.Name;
 
             _document.RefreshAssigment(inputAssigmnet);
         }
 
         public void ChangeLutInitVector(Map lut, bool isOne)
         {
-            var genericAsigment = lut.GenericAssigmnets.FirstOrDefault(gen => gen.LeftSide.ToLower().Contains(Init));
-            genericAsigment.RightSide = Helper.InitVector(genericAsigment.RightSide, isOne);
+            var genericAsigment = lut.GenericAssigmnets.FirstOrDefault(gen => gen.LeftSide.Text.ToLower().Contains(Init));
+            genericAsigment.RightSide.Text = Helper.InitVector(genericAsigment.RightSide.Text, isOne);
 
             _document.RefreshAssigment(genericAsigment);
         }
@@ -124,15 +106,17 @@ namespace VHDLParser.Services
         {
             var outPort = _document.Components.FirstOrDefault(x => x.Name == lut.Entity).Ports.
                     FirstOrDefault(x => x.PortType == PortTypes.Out);
-            var outputAssigmnet = lut.Assigmnets.FirstOrDefault(assgn => assgn.LeftSide.Contains(outPort.Name));
+            var outputAssigmnet = lut.Assigmnets.FirstOrDefault(assgn => assgn.LeftSide.GetSignal() == outPort.Name);
 
-            var to = _document.Signals.FirstOrDefault(x => outputAssigmnet.RightSide.Contains(x.Name));
+            var to = _document.Signals.GetSignal(outputAssigmnet.RightSide.Text);
 
             _document.AddSimpeAssigment(to, signalToInject);
-            outputAssigmnet.RightSide = signalToInject.ToString();
+            outputAssigmnet.RightSide.Text = signalToInject.ToString();
 
             _document.RefreshAssigment(outputAssigmnet);
         }
+
+       
 
     }
 

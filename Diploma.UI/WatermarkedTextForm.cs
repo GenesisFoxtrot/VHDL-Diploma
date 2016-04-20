@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VHDLParser;
-using VHDLParser.Entities;
+using Model.Entities;
+using Model.VHDLSetcions;
 
 namespace Diploma.UI
 {
@@ -17,7 +17,7 @@ namespace Diploma.UI
         public WatermarkedTextForm(VHDLDocument document)
         {
             InitializeComponent();
-            watermarkedVHDLRichTextBox.Text = document.Document;
+            watermarkedVHDLRichTextBox.Text = document.Text;
         }
 
         private void okButton_Click(object sender, EventArgs e)

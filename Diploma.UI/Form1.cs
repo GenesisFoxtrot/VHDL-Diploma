@@ -9,12 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Model;
+using Model.Entities;
 using Model.Options;
-using Model.VHDLWords;
-using Model.VHDLWords.Signals;
-using VHDLParser;
-using VHDLParser.Entities;
-using VHDLParser.Services;
+using Model.Services;
+using Model.VHDLSetcions;
+using Model.VHDLSetcions.Signals;
 
 
 namespace Diploma.UI
@@ -25,7 +24,6 @@ namespace Diploma.UI
         {
             InitializeComponent();
             infoGroupBox.Enabled = true;
-            _watermarkOptions = new WatermarkOptions();
         }
 
         private string curentVHDLFile = @"D:\diploma\mil.vhd";
@@ -49,14 +47,9 @@ namespace Diploma.UI
                 vhdlCode = fileService.GetVHDL(curentVHDLFile);
 
                 _document = new VHDLDocument(vhdlCode);
-                var parser = new Parser();
-                _document.Entity = parser.ParEntities(vhdlCode).FirstOrDefault();
-                _document.Components = parser.ParseCompenets(vhdlLib);
-                _document.Signals = parser.ParseSignals(vhdlCode);
-                _document.Maps = parser.ParseMaps(vhdlCode);
-                SearchService searchService = new SearchService(_document);
-                _document.ConstValueGenerators = searchService.ConstValuesGenerators();
-                _document.FreeLuts = searchService.FreeLuts();
+                _document.Parse(vhdlLib);
+                _watermarkOptions = new WatermarkOptions(_document);
+
                 //TODO Null Checks
                 if (_document.Entity == null)
                 {
@@ -71,10 +64,9 @@ namespace Diploma.UI
                     _document.Entity.Ports.Where(p => p.PortType == PortTypes.In).ToList().ForEach(x => inputListBox.Items.Add(x));
                     _document.Entity.Ports.Where(p => p.PortType == PortTypes.Out).ToList().ForEach(x => outputListBox.Items.Add(x));
                     entityNameLabel.Text = "Entity Name: " + _document.Entity.Name;
-                    freeBitsLabel.Text = "Free Bits for Watermarking: " + _document.FreeLuts.Count() + " bits";
-
+                    freeBitsLabel.Text = "Free Bits for Watermarking: " + _watermarkOptions.WotermarikingDocument.FreeLuts.Count() + " bits";
                 }
-                //File.WriteAllText(@"D:\111.vhdl", document.Document);
+                //File.WriteAllText(@"D:\111.vhdl", document.Text);
             }
 
         }
@@ -98,7 +90,6 @@ namespace Diploma.UI
 
         private void openVHDLFileButton_Click(object sender, EventArgs e)
         {
-            Stream myStream = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.InitialDirectory = @"D:\111";
@@ -124,6 +115,8 @@ namespace Diploma.UI
         {
             if (_document != null)
             {
+                //_watermarkOptions.SignatureOutputSettings.ForEach(x=>x.Port.Name = _document.IOBuffesLayer.GetInsideSignal(x.Port).Name);
+                //_watermarkOptions.WatermarkSettings.ForEach(x => x.Port.Name = _document.IOBuffesLayer.GetInsideSignal(x.Port).Name);
                 WatermarkService service = new WatermarkService(_document);
                 _document = service.Watermark(_watermarkOptions);
                 WatermarkedTextForm form = new WatermarkedTextForm(_document);

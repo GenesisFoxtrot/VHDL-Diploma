@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Model.VHDLWords;
 using Model.VHDLWords.Enumerations;
+using Model.VHDLWords.Maps;
 using Model.VHDLWords.Signals;
 
 namespace VHDLParser.Services
@@ -114,8 +115,7 @@ namespace VHDLParser.Services
                     MatchesToStrings(Regex.Matches(genericAssigments, OneGenericAssimnet)).Select(asgn => new Assigment()
                     {
                         Text = asgn,
-                        LeftSide = Regex.Match(asgn, AssigmentsLeftSide).Value,
-                        RightSide = Regex.Match(asgn, GenericAssigmentsRightSide).Value
+
                     }).ToList();
 
                 var assigments = Regex.Match(map.ToString(), Assigments).Value;
@@ -123,8 +123,8 @@ namespace VHDLParser.Services
                     MatchesToStrings(Regex.Matches(assigments, OneAssimnet)).Select(asgn => new Assigment()
                     {
                         Text = asgn,
-                        LeftSide = Regex.Match(asgn, AssigmentsLeftSide).Value,
-                        RightSide = Regex.Match(asgn, AssigmentsRightSide).Value
+                        LeftSide = new AssignmentSide(Regex.Match(asgn, AssigmentsLeftSide).Value),
+                        RightSide = new AssignmentSide(Regex.Match(asgn, AssigmentsRightSide).Value)
                     }).ToList();
                 mapList.Add(newMap);
             });

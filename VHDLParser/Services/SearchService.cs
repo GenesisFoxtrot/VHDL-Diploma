@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model.Entities;
 using Model.VHDLWords;
+using Model.VHDLWords.Maps;
 using Model.VHDLWords.Signals;
-using VHDLParser.Entities;
 
 namespace VHDLParser.Services
 {
     public class SearchService
     {
         private const string Lut = "lut";
-        private VHDLDocument _document;
+        private readonly VHDLDocument _document;
 
         public SearchService(VHDLDocument document)
         {
@@ -32,7 +33,7 @@ namespace VHDLParser.Services
                 .Select(s => s.RightSide)
                 .ToList();
 
-            return _document.Signals.Where(x => constSignals.Contains(x.Name)).ToList();
+            return _document.Signals.GetSignals(constSignals).Select(x=> x as FullSignal).ToList();
 
         }
 

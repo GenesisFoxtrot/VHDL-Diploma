@@ -41,25 +41,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\WotermarikingDocument.cs" />
+    <Compile Include="VHDLEement\Mux.cs" />
+    <Compile Include="VHDLSetcions\Maps\BusDefenition.cs" />
+    <Compile Include="VHDLSetcions\Maps\ConstValue.cs" />
+    <Compile Include="VHDLSetcions\ParalellSetcion.cs" />
+    <Compile Include="VHDLSetcions\Signals\AssignmentSignals\AssignmentSignal.cs" />
+    <Compile Include="VHDLSetcions\Signals\AssignmentSignals\Bus.cs" />
+    <Compile Include="VHDLSetcions\Signals\Router.cs" />
+    <Compile Include="VHDLSetcions\Signals\SignalEntity.cs" />
+    <Compile Include="VHDLSetcions\VHDLSection.cs" />
     <Compile Include="Options\InWatermarkSettings.cs" />
     <Compile Include="Options\OutWatermarkSettings.cs" />
-    <Compile Include="VHDLWords\Assigment.cs" />
-    <Compile Include="VHDLWords\AssignmentSignal.cs" />
-    <Compile Include="VHDLWords\Entity.cs" />
-    <Compile Include="VHDLWords\Enumerations\ComplexEnumeration.cs" />
-    <Compile Include="VHDLWords\Enumerations\EnumerationDirection.cs" />
-    <Compile Include="VHDLWords\Enumerations\EnumerationBase.cs" />
-    <Compile Include="VHDLWords\Enumerations\SimpleIndex.cs" />
-    <Compile Include="VHDLWords\Map.cs" />
-    <Compile Include="VHDLWords\Signals\FullSignal.cs" />
-    <Compile Include="VHDLWords\Signals\PartialSignal.cs" />
-    <Compile Include="VHDLWords\Signals\Port.cs" />
-    <Compile Include="VHDLWords\PortTypes.cs" />
+    <Compile Include="Services\FileService.cs" />
+    <Compile Include="Services\Helper.cs" />
+    <Compile Include="Services\Parsers\ParsConstants.cs" />
+    <Compile Include="Services\Parsers\Parser.cs" />
+    <Compile Include="Services\Parsers\AssgnSinalParser.cs" />
+    <Compile Include="Services\Parsers\EnumerationParser.cs" />
+    <Compile Include="Services\SearchService.cs" />
+    <Compile Include="Services\WatermarkService.cs" />
+    <Compile Include="VHDLEement\IOBuffer.cs" />
+    <Compile Include="Entities\DocumnetSignals.cs" />
+    <Compile Include="Entities\IOBuffesLayer.cs" />
+    <Compile Include="VHDLSetcions\VHDLDocument.cs" />
+    <Compile Include="Entities\WatermarkOptions.cs" />
+    <Compile Include="VHDLSetcions\Maps\Assignments\AssignmentBase.cs" />
+    <Compile Include="VHDLSetcions\Maps\Assignments\Assignment.cs" />
+    <Compile Include="VHDLSetcions\Entity.cs" />
+    <Compile Include="VHDLSetcions\Maps\Assignments\AssignmentSides\AssignmentSideBase.cs" />
+    <Compile Include="VHDLSetcions\Maps\Assignments\GenericAssignment.cs" />
+    <Compile Include="VHDLSetcions\Signals\Enumerations\ComplexEnumeration.cs" />
+    <Compile Include="VHDLSetcions\Signals\Enumerations\EnumerationDirection.cs" />
+    <Compile Include="VHDLSetcions\Signals\Enumerations\EnumerationBase.cs" />
+    <Compile Include="VHDLSetcions\Signals\Enumerations\SimpleIndex.cs" />
+    <Compile Include="VHDLSetcions\Maps\Assignments\AssignmentSides\AssignmentSide.cs" />
+    <Compile Include="VHDLSetcions\Maps\Map.cs" />
+    <Compile Include="VHDLSetcions\Signals\SignalDefenition.cs" />
+    <Compile Include="VHDLSetcions\Signals\AssignmentSignals\PartialSignal.cs" />
+    <Compile Include="VHDLSetcions\Signals\Port.cs" />
+    <Compile Include="VHDLSetcions\Signals\PortTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VHDLWords\Signals\Signal.cs" />
+    <Compile Include="VHDLSetcions\Signals\Signal.cs" />
     <Compile Include="VHDLEement\Decoder.cs" />
-    <Compile Include="VHDLWords\VHDLWordBase.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
