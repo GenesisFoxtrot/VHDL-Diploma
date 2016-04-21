@@ -68,6 +68,11 @@ namespace Diploma.VHDLWrapper.VHDLSetcions.Signals
 
         }
 
+        public AssignmentSignal AssignmentPort(ISignalsParentSection parent, Port port)
+        {
+            return new AssignmentSignal(port, parent) { Name = port.Name };
+        }
+
         public Bus CreateBus(string name)
         {
             var bus = new Bus(this, name);

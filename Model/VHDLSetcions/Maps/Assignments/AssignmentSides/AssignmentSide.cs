@@ -2,6 +2,7 @@
 using Diploma.VHDLWrapper.Services.Parsers;
 using Diploma.VHDLWrapper.VHDLSetcions.Signals;
 using Diploma.VHDLWrapper.VHDLSetcions.Signals.AssignmentSignals;
+using Diploma.VHDLWrapper.VHDLSetcions.Signals.Enumerations;
 
 namespace Diploma.VHDLWrapper.VHDLSetcions.Maps.Assignments.AssignmentSides
 {
@@ -38,6 +39,19 @@ namespace Diploma.VHDLWrapper.VHDLSetcions.Maps.Assignments.AssignmentSides
             return side;
         }
 
+        public static AssignmentSide Create(Assignment assignment, Port port)
+        {
+            var result = new AssignmentSide(assignment, port.Name);
+            result.Signal = assignment.Document.Router.AssignmentPort(result, port);
+            return result;
+        }
+
+        public static AssignmentSide Create(Assignment assignment, SignalDefenition defenition, EnumerationBase enumeration = null)
+        {
+            var result = new AssignmentSide(assignment, defenition.ToString());
+            result.Signal = assignment.Document.Router.AssignmentSignal(result, defenition);
+            return result;
+        }
         public override string ToString()
         {
             return Signal?.ToString() ?? Value.ToString();

@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LUT.cs" />
+    <Compile Include="LUTComponents.cs" />
+    <Compile Include="MapLUT.cs" />
     <Compile Include="Options\InWatermarkSettings.cs" />
     <Compile Include="Options\OutWatermarkSettings.cs" />
     <Compile Include="Options\WatermarkOptions.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using Diploma.VHDLWrapper.VHDLSetcions.Maps;
 using Diploma.VHDLWrapper.VHDLSetcions.Maps.Assignments;
@@ -66,8 +67,7 @@ namespace Diploma.VHDLWrapper.Services
 
         public static string InitVector(string init, bool isOne)
         {
-            string hexPattern = "(?<=X\")[A-Fa-f0-9]+(?=\")";
-            string hex = Regex.Match(init, hexPattern).Value;
+            var hex = ExtractInitVectorValut(init);
             int hexInt = int.Parse(hex, System.Globalization.NumberStyles.HexNumber);
             var binary = Convert.ToString(hexInt, 2);
             var result = binary.Substring(0, binary.Length/2);
@@ -75,6 +75,23 @@ namespace Diploma.VHDLWrapper.Services
             result = result + (new String(outputChar, binary.Length/2));
             string strHex = Convert.ToInt32(result, 2).ToString("X");
             return Regex.Replace(init, "(?<=X\")[A-Fa-f0-9]+(?=\")", strHex);
+        }
+
+        private const string  hexPattern = "(?<=X\")[A-Fa-f0-9]+(?=\")";
+        public static string ExtractInitVectorValut(string init)
+        {
+            return Regex.Match(init, hexPattern).Value;
+        }
+
+        public static string InitVectorMultiply(string init, int times)
+        {
+            string hex = ExtractInitVectorValut(init);
+            var strHex = new StringBuilder(hex);
+            for (int i = 1; i < times; i++)
+            {
+                strHex.Append(hex);
+            }
+            return Regex.Replace(init, "(?<=X\")[A-Fa-f0-9]+(?=\")", strHex.ToString());
         }
     }
 }

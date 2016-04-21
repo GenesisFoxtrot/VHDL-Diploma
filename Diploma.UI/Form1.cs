@@ -43,7 +43,7 @@ namespace Diploma.UI
 
                 var fileService = new FileService();
 
-                vhdlLib = fileService.GetVHDL(@"D:\111\simprim_Vcomponents2.sty");
+                vhdlLib = fileService.GetVHDL(@"D:\111\unisim_VCOMP.vhd");
                 vhdlCode = fileService.GetVHDL(curentVHDLFile);
 
                 _document = new VHDLDocument(vhdlCode);

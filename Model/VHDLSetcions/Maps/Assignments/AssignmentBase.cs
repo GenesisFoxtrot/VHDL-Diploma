@@ -6,7 +6,7 @@ namespace Diploma.VHDLWrapper.VHDLSetcions.Maps.Assignments
     {
         public Map Map { get; protected set; }
         public override VHDLDocument Document => Map.Document;
-        public override IVHDLSection ParentSection => Document;
+        public override IVHDLSection ParentSection => Map;
         public abstract AssignmentSideBase LeftSide { get;  }
         public abstract AssignmentSideBase RightSide { get; }
         public abstract string NewText();

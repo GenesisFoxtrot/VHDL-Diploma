@@ -11,7 +11,8 @@ namespace Diploma.LUTWatermarking
     public class WatermarkBit
     {
         public bool IsOne { get; set; }
-        public Map LUT { get; set; }
+        public MapLUT LUT { get; set; }
+        public AssignmentSignal RealSignal { get; set; }
         public AssignmentSignal Signal { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Xml;
 using Diploma.VHDLWrapper.Services;
 using Diploma.VHDLWrapper.VHDLSetcions.Maps.Assignments;
 using PC = Diploma.VHDLWrapper.Services.Parsers.ParsConstants;
@@ -23,6 +24,17 @@ namespace Diploma.VHDLWrapper.VHDLSetcions.Maps
             Text = text;
         }
 
+        protected Map(Map map)
+        {
+            Name = map.Name;
+            EntityName = map.EntityName;
+            Entity = map.Entity;
+            Assigmnets = map.Assigmnets;
+            GenericAssignments = map.GenericAssignments;
+            Document = map.Document;
+            Text = map.Text;
+        }
+
         public static Map Parse(VHDLDocument document, string text)
         {       
             var title = Regex.Match(text, PC.RegularTitle).Value;
@@ -42,6 +54,19 @@ namespace Diploma.VHDLWrapper.VHDLSetcions.Maps
             return newMap;
         }
 
+
+        public bool ChangeEnity(Entity newEnity)
+        {
+            if (Entity.Ports.All(x => newEnity.Ports.Any(x.IsEquivalent)))
+            {
+                var newText = Text.Replace(EntityName, newEnity.Name);
+                Entity = newEnity;
+                EntityName = newEnity.Name;      
+                Change(newText);
+                return true;
+            }
+            return false;
+        }
         public void AddAssigment(Assignment assignment)
         {
             Assigmnets.Add(assignment);

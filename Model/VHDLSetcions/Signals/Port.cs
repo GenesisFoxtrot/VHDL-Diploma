@@ -47,5 +47,10 @@ namespace Diploma.VHDLWrapper.VHDLSetcions.Signals
             PortTypes portType;
             return PortTypes.TryParse(type, true, out portType) ? portType : PortTypes.Error;
         }
+
+        public bool IsEquivalent(Port p)
+        {
+            return Bits == p.Bits && Name == p.Name && PortType == p.PortType;
+        }
     }
 }
