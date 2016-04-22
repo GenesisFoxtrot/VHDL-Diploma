@@ -65,33 +65,8 @@ namespace Diploma.VHDLWrapper.Services
             return "PM_" + Guid.NewGuid().ToString().Replace("-", "_");
         }
 
-        public static string InitVector(string init, bool isOne)
-        {
-            var hex = ExtractInitVectorValut(init);
-            int hexInt = int.Parse(hex, System.Globalization.NumberStyles.HexNumber);
-            var binary = Convert.ToString(hexInt, 2);
-            var result = binary.Substring(0, binary.Length/2);
-            var outputChar = isOne ? '1' : '0';
-            result = result + (new String(outputChar, binary.Length/2));
-            string strHex = Convert.ToInt32(result, 2).ToString("X");
-            return Regex.Replace(init, "(?<=X\")[A-Fa-f0-9]+(?=\")", strHex);
-        }
+        
 
-        private const string  hexPattern = "(?<=X\")[A-Fa-f0-9]+(?=\")";
-        public static string ExtractInitVectorValut(string init)
-        {
-            return Regex.Match(init, hexPattern).Value;
-        }
-
-        public static string InitVectorMultiply(string init, int times)
-        {
-            string hex = ExtractInitVectorValut(init);
-            var strHex = new StringBuilder(hex);
-            for (int i = 1; i < times; i++)
-            {
-                strHex.Append(hex);
-            }
-            return Regex.Replace(init, "(?<=X\")[A-Fa-f0-9]+(?=\")", strHex.ToString());
-        }
+        
     }
 }

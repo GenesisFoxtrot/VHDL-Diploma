@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InitVector.cs" />
     <Compile Include="LUT.cs" />
     <Compile Include="LUTComponents.cs" />
     <Compile Include="MapLUT.cs" />

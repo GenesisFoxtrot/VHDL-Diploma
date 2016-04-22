@@ -67,7 +67,7 @@ namespace Diploma.VHDLWrapper.VHDLSetcions.Maps
             }
             return false;
         }
-        public void AddAssigment(Assignment assignment)
+        public virtual void AddAssigment(Assignment assignment)
         {
             Assigmnets.Add(assignment);
             var assignments = Regex.Match(Text, PC.Assigments).Value;

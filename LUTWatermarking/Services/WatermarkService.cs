@@ -3,6 +3,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using Diploma.LUTWatermarking.Options;
+using Diploma.VHDLExtensions.DocumentExtensions.IOBuffers;
 using Diploma.VHDLExtensions.VHDLEnities;
 using Diploma.VHDLExtensions.VHDLEnities.Decoder;
 using Diploma.VHDLWrapper.Services;
@@ -30,8 +31,12 @@ namespace Diploma.LUTWatermarking.Services
         public VHDLDocument Watermark(WatermarkOptions options)
         {
             var doc = options.WotermarikingDocument.Document;
-            options.WatermarkSettings.ForEach(x => x.Signal = options.IOBuffesLayer.WhetherEquivalent(x.Signal));
-            options.SignatureOutputSettings.ForEach(x => x.Signal = options.IOBuffesLayer.WhetherEquivalent(x.Signal));
+
+            var IOBuffesLayer = new IOBuffesLayer(_document);
+            IOBuffesLayer.Parse();
+
+            options.WatermarkSettings.ForEach(x => x.Signal = IOBuffesLayer.WhetherEquivalent(x.Signal));
+            options.SignatureOutputSettings.ForEach(x => x.Signal = IOBuffesLayer.WhetherEquivalent(x.Signal));
 
             List<WatermarkBit> watermarkBits = new List<WatermarkBit>();
 
@@ -41,11 +46,14 @@ namespace Diploma.LUTWatermarking.Services
                 {
                     if (ports.SignatureCode[j] != '-')
                     {
-                        watermarkBits.Add(new WatermarkBit()
+                        var newWB = new WatermarkBit()
                         {
                             IsOne = ports.SignatureCode[j] == '1',
-                            Signal = doc.Router.AssignmentSignal(null, ports.Signal, ports.Signal.Enumeration?.GetBit(j))
-                        });
+                            Signal =
+                                doc.Router.AssignmentSignal(null, ports.Signal, ports.Signal.Enumeration?.GetBit(j))
+                        };
+                        newWB.Signal.IsSource = false;
+                        watermarkBits.Add(newWB);
                     }
                 }
             });
@@ -71,10 +79,10 @@ namespace Diploma.LUTWatermarking.Services
             _document.AddVHDLInBehaviorSection(decoder.ToString());
 
             //-----------------DECODER----------------------------------------
-            
+
 
             //----------------------Lut work---------------------------------- 
-            
+
             /**var signatureBus = _document.Router.CreateBus("WATERMARKED_OUT");
             int i = 0;
             options.WotermarikingDocument.FreeLuts.ForEach(lut =>
@@ -97,11 +105,6 @@ namespace Diploma.LUTWatermarking.Services
             lutForExtenion.ForEach(lut => lut.ExtendLUT(components)); //Extends lut
 
             var freeInputs = lutForExtenion.Select(x => x.GetFreeInput()).ToList();
-            
-            lutForExtenion.ForEach(lut =>
-            {
-
-            });
 
             List<MapLUT> lutsForInsertion = new List<MapLUT>(lutForExtenion); //Merge all luts 
             //lutsForInsertion.AddRange(); //AddFreeLut
@@ -113,7 +116,7 @@ namespace Diploma.LUTWatermarking.Services
                 if (watermarkBit != null)
                 {
                     var port = lut.GetFreeInput(); //TODO
-                    lut.AddAssigment(Assignment.Create(lut, port, isWatermark));
+                    lut.AddLutAssigment(Assignment.Create(lut, port, isWatermark));
                     lut.ConstValuePort(port, watermarkBit.IsOne);
                     watermarkBit.LUT = lut;
                 }
@@ -126,53 +129,25 @@ namespace Diploma.LUTWatermarking.Services
                 .InserSignalDefenition(
                     "FO" + Helper.NewGuidName(),
                     def.Key.ValueType,
-                    def.Key.Enumeration.CloneEnumeration());
+                    def.Key.Enumeration?.CloneEnumeration());
 
                 doc.Router.RedirectAllSources(def.Key, ficitonSignal);
                 def.ToList().ForEach(wbit =>
                 {
-                    wbit.RealSignal = doc.Router.GetRoutes(ficitonSignal)
-                        .Signals.FirstOrDefault(x => x.Enumeration.IsSameBus(wbit.Signal.Enumeration));
+                    wbit.RealSignal = doc.Router.GetRoutes(ficitonSignal) 
+                        .Signals.FirstOrDefault(x => (x.Enumeration == null && wbit.Signal.Enumeration == null) ||
+                        (x.Enumeration == null && wbit.Signal.Enumeration == null && x.Enumeration.IsSameBus(wbit.Signal.Enumeration)));
 
-                    Mux mux = new Mux
-                    {
-                        To = wbit.Signal,
-                        Condition = isWatermark + " = '1'",
-                        Else = wbit.RealSignal,
-                        Then = wbit.LUT.GetOutput()
-                    };
+                    Mux mux = new Mux();
+                    mux.To = wbit.Signal;
+                    mux.Condition =  doc.Router.AssignmentSignal(mux, isWatermark) + " = '1'";
+                    mux.Else = wbit.RealSignal;
+                    mux.Then = wbit.LUT.GetOutput();
                     mux.Insert(_document);
                 });
             });
 
             return _document;
         }
-
-        public void ChangeLutConstIputs(Map lut, Signal signal, List<SignalDefenition> constSignals)
-        {
-            var inputAssigmnet = lut.Assigmnets.FirstOrDefault(assgn => constSignals.Select(c => c.Name).Contains(assgn.Right.Signal.Name));
-            inputAssigmnet.Right.Change(signal.Name);
-        }
-
-        public void ChangeLutInitVector(Map lut, bool isOne) //REWRITE
-        {
-            var genericAsigment = lut.GenericAssignments.FirstOrDefault(gen => gen.LeftSide.Text.ToLower().Contains(Init));
-            genericAsigment.RightSide.Change(Helper.InitVector(genericAsigment.RightSide.Text, isOne));
-        }
-
-        public void InjectLutOutput(Map lut, SignalDefenition signalToInject)
-        {
-            /**var outPort = _document.Components.FirstOrDefault(x => x.Name == lut.EntityName).Ports.
-                    FirstOrDefault(x => x.PortType == PortTypes.Out);
-            var outputAssigmnet = lut.Assigmnets.FirstOrDefault(assgn => assgn.Left.Signal.Name == outPort.Name);
-
-            var to = _document.Signals.GetSignalDefenition(outputAssigmnet.Right.Text);
-
-
-            _document.Router.NewRout(to, signalToInject);
-            outputAssigmnet.RightSide.Change(signalToInject.ToString());**/
-        }
-
-        
     }
 }

@@ -16,7 +16,6 @@ namespace Diploma.LUTWatermarking.Options
 
         public List<InWatermarkSettings> WatermarkSettings { get; private set; }
         public List<OutWatermarkSettings> SignatureOutputSettings { get; private set; }
-        public IOBuffesLayer IOBuffesLayer { get; set; }
         public WotermarikingDocument WotermarikingDocument { get; private set; }
         public bool[] Signature { get; set; }
     }

@@ -120,8 +120,6 @@ namespace Diploma.UI
                 //_watermarkOptions.SignatureOutputSettings.ForEach(x=>x.Port.Name = _document.IOBuffesLayer.GetInsideSignal(x.Port).Name);
                 //_watermarkOptions.WatermarkSettings.ForEach(x => x.Port.Name = _document.IOBuffesLayer.GetInsideSignal(x.Port).Name);
 
-                _watermarkOptions.IOBuffesLayer = new IOBuffesLayer(_document);
-                _watermarkOptions.IOBuffesLayer.Parse();
                 WatermarkService service = new WatermarkService(_document);
                 _document = service.Watermark(_watermarkOptions);
                 WatermarkedTextForm form = new WatermarkedTextForm(_document);

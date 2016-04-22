@@ -4,10 +4,12 @@ using Diploma.VHDLWrapper.VHDLSetcions.Signals.AssignmentSignals;
 
 namespace Diploma.VHDLExtensions.VHDLEnities
 {
-    public class Mux : VHDLSection
+    public class Mux : VHDLSection , ISignalsParentSection
     {
         private VHDLDocument _document;
         public override VHDLDocument Document => _document;
+        public Entity Entity => _document.Entity;
+        public string EntityName => _document.Entity.Name;
         public override IVHDLSection ParentSection => Document;
         public Signal To { get;  set; }
         public string Condition { get;  set; }
@@ -38,6 +40,12 @@ namespace Diploma.VHDLExtensions.VHDLEnities
                 return true;
             }
             return false;
+        }
+
+        public void ChangeSignal(AssignmentSignal signal)
+        {
+            To = signal;
+            Change(ToString()); 
         }
 
         public override string ToString()

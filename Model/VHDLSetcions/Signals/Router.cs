@@ -125,7 +125,7 @@ namespace Diploma.VHDLWrapper.VHDLSetcions.Signals
             {
                 var sources = _routes[from.Name].Signals.Where(x => x.IsSource.Value).ToList();
                 _routes[from.Name].Signals.RemoveAll(x => sources.Contains(x));
-                sources.ForEach(asignal => asignal.Replace(AssignmentSignal(asignal.SignalsParentSection, to, asignal.Enumeration.CloneEnumeration())));
+                sources.ForEach(asignal => asignal.Replace(AssignmentSignal(asignal.SignalsParentSection, to, asignal.Enumeration?.CloneEnumeration())));
                 return true;
             }
             return false;

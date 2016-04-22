@@ -47,8 +47,8 @@ namespace Diploma.LUTWatermarking
                 Map.ChangeEnity(biggerLut.Entity);
                 var extraBits = biggerLut.Bits - lut.Bits;
                 int times = (int)Math.Pow(2, extraBits);
-                ChangeInitVector(Helper.InitVectorMultiply(GetInitVector(), times));
-                Map.Change(Text);
+                ChangeInitVector(InitVector.InitVectorMultiply(GetInitVector(), times));
+                Change(Map.Text);
             }
         }
 
@@ -83,8 +83,24 @@ namespace Diploma.LUTWatermarking
                 var istr = Regex.Match(port.Name, IndexPattern).Value;
                 int index;
                 int.TryParse(istr, out index);
-                var initVector = Helper.ExtractInitVectorValut(GetInitVector());
+                var initVector = InitVector.ExtractInitVectorValut(GetInitVector());
+                var binaryValut = InitVector.FromHexToBibValue(initVector);
+                var newBinary = new StringBuilder(string.Empty);
+                var bit = isOne ? '1' : '0';
+                for (int j = 0; j < binaryValut.Length; j++)
+                {
+                    newBinary.Append(j % ((index + 1) * 4) < (index + 1)*2 ? bit : binaryValut[j]);
+                }
+                var hex = InitVector.FomBinToHexValue(newBinary.ToString());
+                var newVector = InitVector.ValueToVector(hex);
+                ChangeInitVector(newVector);
             }
+        }
+
+        public void AddLutAssigment(Assignment assignment)
+        {
+            base.AddAssigment(assignment);
+            Map.Change(Text);
         }
     }
 }
